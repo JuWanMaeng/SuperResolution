@@ -53,15 +53,28 @@ class MultiHeadAttention(nn.Module):
         queries=rearrange(self.queries(x), 'b n (h d) -> b h n d', h=self.num_heads)
         keys = rearrange(self.keys(x), 'b n (h d) -> b h n d', h=self.num_heads)
         values = rearrange(self.values(x), 'b n (h d) -> b h n d', h=self.num_heads)
-        
         energy=torch.einsum('bhqd, bhkd -> bhqk', queries,keys)  # energy의 shape은 (batch_size, num_heads, query_length, key_length)
-
+       
         if mask is not None:
             fill_value = torch.finfo(torch.float32).min
             energy.mask_fill(~mask, fill_value)
             
-        scaling=self.emb_size ** (1/2)
-        att=F.s
+        scaling = self.emb_size ** (1/2)
+        att = F.softmax(energy, dim=-1) / scaling  # attention score
+        att = self.att_drop(att)
+        # sum up over the third axis
+        out = torch.einsum('bhal, bhlv -> bhav', att, values) # 197x96
+        out = rearrange(out, 'b h n d -> b n (h d)')
+        out = self.projection(out)
+        
+        # print(queries.shape,keys.shape,values.shape,energy.shape,att.shape,out.shape,end='\n')
+        # torch.Size([16, 8, 197, 96]) 
+        # #torch.Size([16, 8, 197, 96]) 
+        # #torch.Size([16, 8, 197, 96]) 
+        # #torch.Size([16, 8, 197, 197])  energy
+        # #torch.Size([16, 8, 197, 197])  atten score
+        # #torch.Size([16, 197, 768])
+        return out
         
         
         
@@ -76,4 +89,9 @@ if __name__=='__main__':
     patch_embedding=PatchEmbedding().to(device)
     patch_output=patch_embedding(x)
     print('[batch, 1+num of patches, emb_size] = ', patch_output.shape)
+    
+    # Check MultiHeadAttention
+    MHA = MultiHeadAttention().to(device)
+    MHA_output = MHA(patch_output)
+    print(MHA_output.shape)
     
