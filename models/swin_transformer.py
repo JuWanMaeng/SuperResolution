@@ -152,6 +152,7 @@ class WindowAttention(nn.Module):
         relative_position_bias = relative_position_bias.permute(2, 0, 1).contiguous()  # nH, Wh*Ww, Wh*Ww
         attn = attn + relative_position_bias.unsqueeze(0)
         
+        
 
         if mask is not None:
             nW = mask.shape[0]
@@ -562,7 +563,7 @@ class SwinTransformer(nn.Module):
                                drop=drop_rate, attn_drop=attn_drop_rate,
                                drop_path=dpr[sum(depths[:i_layer]):sum(depths[:i_layer + 1])],
                                norm_layer=norm_layer,
-                               downsample=PatchMerging if (i_layer < self.num_layers - 1) else None, ######여기부터
+                               downsample=PatchMerging if (i_layer < self.num_layers - 1) else None, 
                                use_checkpoint=use_checkpoint,
                                fused_window_process=fused_window_process)
             self.layers.append(layer)
@@ -599,7 +600,7 @@ class SwinTransformer(nn.Module):
 
         for layer in self.layers:
             x = layer(x)
-
+        
         x = self.norm(x)  # B L C
         x = self.avgpool(x.transpose(1, 2))  # B C 1
         x = torch.flatten(x, 1)
@@ -623,128 +624,130 @@ class SwinTransformer(nn.Module):
 
 if __name__=='__main__':
     device='cuda:0'
-    window_size=7
-    input=torch.randn((16,3,224,224)).to(device)
-    
-    # 1. patch embeding
-    patch_embed=PatchEmbed().to(device)
-    embed_patch=patch_embed(input)
-    print(embed_patch.shape)
-    
-    embed_patch=rearrange(embed_patch,'b (h w) c -> b h w c',h=56)
-    print(embed_patch.shape)
-    
-    
-    # 2. window partition
-    x_windows=window_partition(embed_patch,window_size)
-    print(x_windows.shape)
-    
-    x_windows=rearrange(x_windows,'n w1 w2 c -> n (w1 w2) c',w1=window_size,w2=window_size)
-    
-    # 3. window attention
-    window_att=WindowAttention(dim=96,window_size=7,num_heads=3).to(device)
-    attn=window_att(x_windows)
-    print(attn.shape)
-    
-    attn=rearrange(attn,'b (w1 w2) c -> b w1 w2 c',w1=window_size,w2=window_size)  # merge window 
-    print(attn.shape)
-    
-    # 4.  window reverse
-    x=window_reverse(attn,window_size,56,56)
-    
-    x=rearrange(x,'b w h c -> b (w h) c')
-    print(x.shape)   # same shpae as embed_patch    - first swintransformer block
-    print('first swin transformer block finished')
-    
-    
-    shift_size=window_size//2
-    
-    # 5. second swin_transformer block start
-    x=rearrange(x,'b  (h w) c -> b h w c',h=56)
-    print(x.shape)
-    
-    # 6. calculate attention mask for SW-MSA
-    H, W = 56,56
-    img_mask = torch.zeros((1, H, W, 1))  # 1 H W 1
-    h_slices = (slice(0, -window_size),
-                slice(-window_size, -shift_size),
-                slice(-shift_size, None))
-    w_slices = (slice(0, -window_size),
-                slice(-window_size, -shift_size),
-                slice(-shift_size, None))
-    cnt = 0
-    for h in h_slices:
-        for w in w_slices:
-            img_mask[:, h, w, :] = cnt
-            cnt += 1
-
-    mask_windows = window_partition(img_mask, window_size)  # nW, window_size, window_size, 1
-    mask_windows = mask_windows.view(-1, window_size * window_size)
-    attn_mask = mask_windows.unsqueeze(1) - mask_windows.unsqueeze(2)
-    attn_mask = attn_mask.masked_fill(attn_mask != 0, float(-100.0)).masked_fill(attn_mask == 0, float(0.0)) # nW, wH*wH, wW*wW
-    
-    # 7. window partition
-    shifted_x=torch.roll(x,shifts=(-shift_size,-shift_size),dims=(1,2))
-    x_windows=window_partition(shifted_x,window_size)
-    x_windows=rearrange(x_windows,'n s1 s2 c -> n (s1 s2) c')
-    print(x_windows.shape)
-    
-    # 8. shifted window attention
-    window_att=WindowAttention(dim=96,window_size=7,num_heads=3).to(device)
-    attn=window_att(x_windows)
-    print(attn.shape)
-    attn=rearrange(attn,'b (w1 w2) c -> b w1 w2 c',w1=window_size,w2=window_size)  # merge window 
-    print(attn.shape)
-    
-    # 9. window reverse
-    shifted_x=window_reverse(attn,window_size,56,56)
-    x=torch.roll(shifted_x,shifts=(shift_size,shift_size),dims=(1,2))
-    
-    print(x.shape)
-    
-    x=rearrange(x,'b w h c -> b (w h) c')
-    print(x.shape)   # same shpae as embed_patch    - first swintransformer block
-    print('second swin transformer block finished')
-    
-    patch_merge=PatchMerging((56,56),96).to(device)
-    x=patch_merge(x)     # ex) 16, 28*28, 384/2
-    print(x.shape)
-    print('down sampling finished')
-    
-    
-    #############################
-    #    apply basic layer      #
-    #############################
-    print('@@@@@@@@@@@@@@@@@')
-    print('apply basic layer')
-    window_size=7
-    input=torch.randn((16,3,224,224)).to(device)
-    
-    # 1. patch embeding
-    patch_embed=PatchEmbed().to(device)
-    embed_patch=patch_embed(input)
-    print(embed_patch.shape)
-
-    basic_layer=BasicLayer(dim=96,input_resolution=(56,56),depth=2,num_heads=3,window_size=7).to(device)
-    x=basic_layer(embed_patch)
-    print(x.shape)
-    
-    patch_merge=PatchMerging((56,56),96).to(device)
-    x=patch_merge(x)     # ex) 16, 28*28, 384/2
-    print(x.shape)
-    print('down sampling finished')
-    
     #############################
     #   apply swin transformer  #
     #############################
-    print('@@@@@@@@@@@@@@@@@')
-    print('apply swin transformer')
+    # print('@@@@@@@@@@@@@@@@@')
+    # print('apply swin transformer')
     window_size=7
     input=torch.randn((16,3,224,224)).to(device)
     swin=SwinTransformer().to(device)
     output=swin(input)
-    print(output.shape)
     
     
+    
+    
+    # window_size=7
+    # input=torch.randn((16,3,224,224)).to(device)
+    
+    # # 1. patch embeding
+    # patch_embed=PatchEmbed().to(device)
+    # embed_patch=patch_embed(input)
+    # print(embed_patch.shape)
+    
+    # embed_patch=rearrange(embed_patch,'b (h w) c -> b h w c',h=56)
+    # print(embed_patch.shape)
+    
+    
+    # # 2. window partition
+    # x_windows=window_partition(embed_patch,window_size)
+    # print(x_windows.shape)
+    
+    # x_windows=rearrange(x_windows,'n w1 w2 c -> n (w1 w2) c',w1=window_size,w2=window_size)
+    
+    # # 3. window attention
+    # window_att=WindowAttention(dim=96,window_size=7,num_heads=3).to(device)
+    # attn=window_att(x_windows)
+    # print(attn.shape)
+    
+    # attn=rearrange(attn,'b (w1 w2) c -> b w1 w2 c',w1=window_size,w2=window_size)  # merge window 
+    # print(attn.shape)
+    
+    # # 4.  window reverse
+    # x=window_reverse(attn,window_size,56,56)
+    
+    # x=rearrange(x,'b w h c -> b (w h) c')
+    # print(x.shape)   # same shpae as embed_patch    - first swintransformer block
+    # print('first swin transformer block finished')
+    
+    
+    # shift_size=window_size//2
+    
+    # # 5. second swin_transformer block start
+    # x=rearrange(x,'b  (h w) c -> b h w c',h=56)
+    # print(x.shape)
+    
+    # # 6. calculate attention mask for SW-MSA
+    # H, W = 56,56
+    # img_mask = torch.zeros((1, H, W, 1))  # 1 H W 1
+    # h_slices = (slice(0, -window_size),
+    #             slice(-window_size, -shift_size),
+    #             slice(-shift_size, None))
+    # w_slices = (slice(0, -window_size),
+    #             slice(-window_size, -shift_size),
+    #             slice(-shift_size, None))
+    # cnt = 0
+    # for h in h_slices:
+    #     for w in w_slices:
+    #         img_mask[:, h, w, :] = cnt
+    #         cnt += 1
+
+    # mask_windows = window_partition(img_mask, window_size)  # nW, window_size, window_size, 1
+    # mask_windows = mask_windows.view(-1, window_size * window_size)
+    # attn_mask = mask_windows.unsqueeze(1) - mask_windows.unsqueeze(2)
+    # attn_mask = attn_mask.masked_fill(attn_mask != 0, float(-100.0)).masked_fill(attn_mask == 0, float(0.0)) # nW, wH*wH, wW*wW
+    
+    # # 7. window partition
+    # shifted_x=torch.roll(x,shifts=(-shift_size,-shift_size),dims=(1,2))
+    # x_windows=window_partition(shifted_x,window_size)
+    # x_windows=rearrange(x_windows,'n s1 s2 c -> n (s1 s2) c')
+    # print(x_windows.shape)
+    
+    # # 8. shifted window attention
+    # window_att=WindowAttention(dim=96,window_size=7,num_heads=3).to(device)
+    # attn=window_att(x_windows)
+    # print(attn.shape)
+    # attn=rearrange(attn,'b (w1 w2) c -> b w1 w2 c',w1=window_size,w2=window_size)  # merge window 
+    # print(attn.shape)
+    
+    # # 9. window reverse
+    # shifted_x=window_reverse(attn,window_size,56,56)
+    # x=torch.roll(shifted_x,shifts=(shift_size,shift_size),dims=(1,2))
+    
+    # print(x.shape)
+    
+    # x=rearrange(x,'b w h c -> b (w h) c')
+    # print(x.shape)   # same shpae as embed_patch    - first swintransformer block
+    # print('second swin transformer block finished')
+    
+    # patch_merge=PatchMerging((56,56),96).to(device)
+    # x=patch_merge(x)     # ex) 16, 28*28, 384/2
+    # print(x.shape)
+    # print('down sampling finished')
+    
+    
+    # #############################
+    # #    apply basic layer      #
+    # #############################
+    # print('@@@@@@@@@@@@@@@@@')
+    # print('apply basic layer')
+    # window_size=7
+    # input=torch.randn((16,3,224,224)).to(device)
+    
+    # # 1. patch embeding
+    # patch_embed=PatchEmbed().to(device)
+    # embed_patch=patch_embed(input)
+    # print(embed_patch.shape)
+
+    # basic_layer=BasicLayer(dim=96,input_resolution=(56,56),depth=2,num_heads=3,window_size=7).to(device)
+    # x=basic_layer(embed_patch)
+    # print(x.shape)
+    
+    # patch_merge=PatchMerging((56,56),96).to(device)
+    # x=patch_merge(x)     # ex) 16, 28*28, 384/2
+    # print(x.shape)
+    # print('down sampling finished')
+    
+
         
     

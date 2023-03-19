@@ -146,38 +146,38 @@ class ViT(nn.Sequential):
 
 if __name__=='__main__':
     device='cuda:0'
-    x=torch.rand(16,3,224,224).to(device)
-    patch_embedding=PatchEmbedding().to(device)
-    patch_output=patch_embedding(x)
-    print('[batch, 1+num of patches, emb_size] = ', patch_output.shape)
+    # x=torch.rand(16,3,224,224).to(device)
+    # patch_embedding=PatchEmbedding().to(device)
+    # patch_output=patch_embedding(x)
+    # print('[batch, 1+num of patches, emb_size] = ', patch_output.shape)
     
-    # Check MultiHeadAttention
-    MHA = MultiHeadAttention().to(device)
-    MHA_output = MHA(patch_output)
-    print(MHA_output.shape)
+    # # Check MultiHeadAttention
+    # MHA = MultiHeadAttention().to(device)
+    # MHA_output = MHA(patch_output)
+    # print(MHA_output.shape)
     
-    # check feedforwardblock
-    x=torch.randn(16,1,128).to(device)
-    model=FeedForwardBlock(128).to(device)
-    output=model(x)
-    print(output.shape)
+    # # check feedforwardblock
+    # x=torch.randn(16,1,128).to(device)
+    # model=FeedForwardBlock(128).to(device)
+    # output=model(x)
+    # print(output.shape)
     
-    # Check TransformerEncoderBlock
-    model = TransformerEncoderBlock().to(device)
-    output = model(patch_output).to(device)
-    print(output.shape)
+    # # Check TransformerEncoderBlock
+    # model = TransformerEncoderBlock().to(device)
+    # output = model(patch_output).to(device)
+    # print(output.shape)
     
     
-    # Check TransformerEncoder
-    model = TransformerEncoder().to(device)
-    output = model(patch_output)
-    print(output.shape)
+    # # Check TransformerEncoder
+    # model = TransformerEncoder().to(device)
+    # output = model(patch_output)
+    # print(output.shape)
     
-    # check
-    x = torch.randn(16, 1, 768).to(device)
-    model = ClassificationHead().to(device)
-    output = model(x)
-    print(output.shape)
+    # # check
+    # x = torch.randn(16, 1, 768).to(device)
+    # model = ClassificationHead().to(device)
+    # output = model(x)
+    # print(output.shape)
     
     # Check
     x = torch.randn(16,3,224,224).to(device)
@@ -185,4 +185,4 @@ if __name__=='__main__':
     output = model(x)
     print(output.shape)
     
-    print(summary(model,(3,224,224),device='cuda'))
+    # print(summary(model,(3,224,224),device='cuda'))
