@@ -383,6 +383,15 @@ def tensor2img(tensor, out_type=np.uint8, min_max=(0, 1)):
 
 def augment_img(img, mode=0):
     '''Kai Zhang (github: https://github.com/cszn)
+    
+    mode == 0: 아무런 변형도 수행하지 않습니다.
+    mode == 1: 이미지를 왼쪽으로 90도 회전한 후, 상하 반전시킵니다.
+    mode == 2: 이미지를 상하 반전시킵니다.
+    mode == 3: 이미지를 오른쪽으로 90도 회전합니다.
+    mode == 4: 이미지를 오른쪽으로 180도 회전한 후, 상하 반전시킵니다.
+    mode == 5: 이미지를 왼쪽으로 90도 회전합니다.
+    mode == 6: 이미지를 왼쪽으로 180도 회전합니다.
+    mode == 7: 이미지를 오른쪽으로 270도 회전한 후, 상하 반전시킵니다.
     '''
     if mode == 0:
         return img

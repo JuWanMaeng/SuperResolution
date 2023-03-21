@@ -4,7 +4,6 @@ import torch.optim as optim
 import torch.nn as nn
 import torch.optim.lr_scheduler as lr_scheduler
 
-from models.SwinIR import SwinIR
 from models.EDSR import EDSR
 from torch.utils.data import DataLoader
 
@@ -25,30 +24,25 @@ def main(scale=0):
     else:
         device='cpu'
 
-    upscale = 4
-    window_size=8
-    height = (1024 // upscale // window_size + 1) * window_size
-    width = (720 // upscale // window_size + 1) * window_size
+    upscale = 2
+
     
     train_dataset=DatasetSR(phase='train')
     val_dataset=DatasetSR(phase='val')
-    train_dataloader=DataLoader(train_dataset,batch_size=4,num_workers=8,shuffle=True)
+    train_dataloader=DataLoader(train_dataset,batch_size=64,num_workers=16,shuffle=True)
     val_dataloader=DataLoader(val_dataset,batch_size=1,num_workers=1,shuffle=True)
 
    
-    model = SwinIR(upscale=4, in_chans=3, window_size=8,
-                        img_range=1., depths=[6, 6, 6, 6, 6, 6], embed_dim=180, num_heads=[6, 6, 6, 6, 6, 6],
-                        mlp_ratio=2, upsampler='pixelshuffle', resi_connection='1conv')
+    model = EDSR(scale=upscale)
     model.to(device)
     
-    optimizer=optim.Adam(model.parameters(),lr=2e-4)
+    optimizer=optim.Adam(model.parameters(),lr=10e-4,betas=[0.9,0.999],eps=10e-8)
     criterion=nn.L1Loss()
-    scheduler = lr_scheduler.MultiStepLR(optimizer, milestones=[125000, 200000, 225000, 237500, 250000], gamma=0.5)
+    scheduler = lr_scheduler.MultiStepLR(optimizer, milestones=[100000,200000,300000,400000], gamma=0.5)
     step=0
-
     best_loss=float('inf')
 
-    for epoch in range(500000):  # keep running
+    for epoch in range(500000): 
         current_lr=optimizer.param_groups[0]['lr']
         print('-'*20)
         print(f'epoch:{epoch+1}, current_lr:{current_lr}')
@@ -68,64 +62,43 @@ def main(scale=0):
             optimizer.step()
         scheduler.step()        
         
-        if step%2000==0:
+        if step%1300==0:
             current_loss=0
             psnr=0
             ssim=0
             model.eval()
             val_tq=tqdm(val_dataloader, ncols=80, smoothing=0, bar_format='val: {desc}|{bar}{r_bar}')
             with torch.no_grad():
-                for imgs in val_tq:
+                for idx,imgs in enumerate(val_tq):
+                    if idx==10:
+                        break
                     HR_img=imgs['H'].to(device)
                     LR_img=imgs['L'].to(device)
                     
                     output_img=model(LR_img)
                     current_loss+=criterion(output_img,HR_img)
                     
-                    
-                    
                     output_img=output_img[0].cpu().numpy()
                     HR_img=HR_img[0].cpu().numpy()
-                    output_img=(rearrange(output_img,'c h w -> h w c')*255).astype(np.uint8)
-                    HR_img=(rearrange(HR_img,'c h w -> h w c')*255).astype(np.uint8)
+                    output_img=(rearrange(output_img,'c h w -> h w c'))
+                    HR_img=(rearrange(HR_img,'c h w -> h w c'))
 
-                    psnr+=calculate_psnr(output_img,HR_img,crop_border=0)
-                    ssim+=calculate_ssim(output_img,HR_img,crop_border=0)
+                    psnr+=calculate_psnr(output_img,HR_img,crop_border=8)
+                    ssim+=calculate_ssim(output_img,HR_img,crop_border=8)
                     
             
-            epoch_loss=current_loss / len(val_dataloader.dataset)
+            epoch_loss=current_loss / 10
             
             if best_loss > epoch_loss:
                 torch.save(model.state_dict(),f'experiment/SwinIR/best.pt')
                 
                 
-            avg_pnsr=psnr / len(val_dataloader.dataset)
-            avg_ssim=ssim / len(val_dataloader.dataset)
+            avg_pnsr=psnr / 10
+            avg_ssim=ssim / 10
             
             
-            print(f'epoch:{epoch}, iter:{step}, Average PSNR:{avg_pnsr:.4f}, Average SSIM:{avg_ssim:.4f}, loss:{epoch_loss:.4f}\n')
+            print(f'epoch:{epoch+1}, iter:{step}, Average PSNR:{avg_pnsr:.4f}, Average SSIM:{avg_ssim:.4f}, loss:{epoch_loss:.4f}\n')
         
-        
-            
-            
-            
-                    
-                    
-                    
-                    
-            
-            
 
 if __name__ == '__main__':
-   
-    device= 'cuda:0' if torch.cuda.is_available() else 'cpu'
-    model=EDSR(scale=2).to(device)
-    train_dataset=DatasetSR(phase='train')
-    val_dataset=DatasetSR(phase='val')
-    x=val_dataset[0]['L'].to(device)
-    y=val_dataset[0]['H'].to(device)
-    x=model(x)
-    print(x.shape,y.shape)
-    
-    
-    
+    main()

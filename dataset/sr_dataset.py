@@ -28,8 +28,8 @@ class DatasetSR(data.Dataset):
         super(DatasetSR, self).__init__()
         self.phase = phase
         self.n_channels =  3
-        self.sf =  4
-        self.patch_size = 256
+        self.sf =  2
+        self.patch_size = 96
         self.L_size = self.patch_size // self.sf
 
         # ------------------------------------
@@ -38,7 +38,7 @@ class DatasetSR(data.Dataset):
         
         with open(f'dataset/{phase}_HR.json', 'r') as f:
             self.imgs_H=json.load(f)
-        with open(f'dataset/{phase}_LR.json','r') as f:
+        with open(f'dataset/{phase}_x2_LR.json','r') as f:
             self.imgs_L=json.load(f)
 
         assert self.imgs_H, 'Error: H imgs are empty.'
@@ -53,7 +53,7 @@ class DatasetSR(data.Dataset):
         # ------------------------------------
         img_H=cv2.imread(self.imgs_H[index]['img'])
         img_H=cv2.cvtColor(img_H,cv2.COLOR_BGR2RGB)
-        img_H=util.uint2single(img_H)
+        # img_H=util.uint2single(img_H)
         
         # ------------------------------------
         # modcrop
@@ -68,7 +68,7 @@ class DatasetSR(data.Dataset):
             # --------------------------------
             img_L=cv2.imread(self.imgs_L[index]['img'])
             img_L=cv2.cvtColor(img_L,cv2.COLOR_BGR2RGB)
-            img_L=util.uint2single(img_L)
+            # img_L=util.uint2single(img_L)
             
 
         else:
@@ -101,8 +101,8 @@ class DatasetSR(data.Dataset):
             # --------------------------------
             # augmentation - flip and/or rotate
             # --------------------------------
-            # mode = random.randint(0, 7)
-            # img_L, img_H = util.augment_img(img_L, mode=mode), util.augment_img(img_H, mode=mode)
+            mode = random.randint(0, 7)
+            img_L, img_H = util.augment_img(img_L, mode=mode), util.augment_img(img_H, mode=mode)
         
         # ------------------------------------
         # L/H pairs, HWC to CHW, numpy to tensor
