@@ -29,7 +29,7 @@ class DatasetSR(data.Dataset):
         self.phase = phase
         self.n_channels =  3
         self.sf =  4
-        self.patch_size = 96
+        self.patch_size = 256
         self.L_size = self.patch_size // self.sf
 
         # ------------------------------------

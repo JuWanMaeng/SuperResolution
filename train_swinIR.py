@@ -30,7 +30,7 @@ def main(scale=0):
     
     train_dataset=DatasetSR(phase='train')
     val_dataset=DatasetSR(phase='val')
-    train_dataloader=DataLoader(train_dataset,batch_size=16,num_workers=8,shuffle=True)
+    train_dataloader=DataLoader(train_dataset,batch_size=4,num_workers=8,shuffle=True)
     val_dataloader=DataLoader(val_dataset,batch_size=1,num_workers=1,shuffle=True)
 
    
@@ -49,7 +49,7 @@ def main(scale=0):
     for epoch in range(500000):  # keep running
         current_lr=optimizer.param_groups[0]['lr']
         print('-'*20)
-        print(f'epoch:{epoch}, current_lr:{current_lr}')
+        print(f'epoch:{epoch+1}, current_lr:{current_lr}')
         model.train()
         train_tq=tqdm(train_dataloader, ncols=80, smoothing=0, bar_format='train: {desc}|{bar}{r_bar}')
         for imgs in train_tq:
@@ -66,7 +66,7 @@ def main(scale=0):
             optimizer.step()
         scheduler.step()        
         
-        if step%2500==0:
+        if step%2000==0:
             current_loss=0
             psnr=0
             ssim=0
@@ -89,18 +89,19 @@ def main(scale=0):
 
                     psnr+=calculate_psnr(output_img,HR_img,crop_border=0)
                     ssim+=calculate_ssim(output_img,HR_img,crop_border=0)
-                    break
+                    
             
             epoch_loss=current_loss / len(val_dataloader.dataset)
+            
             if best_loss > epoch_loss:
                 torch.save(model.state_dict(),f'experiment/SwinIR/best.pt')
                 
                 
-        avg_pnsr=psnr / len(val_dataloader.dataset)
-        avg_ssim=ssim / len(val_dataloader.dataset)
-        
-        
-        print(f'epoch:{epoch}, iter:{step}, Average PSNR:{avg_pnsr:.4f}, Average SSIM:{avg_ssim:.4f}, loss:{epoch_loss:.4f}\n')
+            avg_pnsr=psnr / len(val_dataloader.dataset)
+            avg_ssim=ssim / len(val_dataloader.dataset)
+            
+            
+            print(f'epoch:{epoch}, iter:{step}, Average PSNR:{avg_pnsr:.4f}, Average SSIM:{avg_ssim:.4f}, loss:{epoch_loss:.4f}\n')
         
         
             
