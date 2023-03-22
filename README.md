@@ -1,16 +1,20 @@
-# Experiments
+# EDSR,MDSR (CVPR 2017)
 
-1. STL10 classification 성능 비교
-- epoch:100, optimizer:Adam(lr=0.0001), loss: crossentropy loss
+- LR image: 48x48 size
+- augmentation: random horizontal flip, 90 rotation
+- substracting the mean RGB value
+- Optimizer: Adam, b1=0.9, b2=0.999, e=10e-8
+- Scheduler: Multistep (milestone=[180,360,540,720], gamma=0.5)
+- loss: L1
+- batch size: 64
+- train epoch: 800
 
-|  | Best accuracy |
-| --- | --- |
-| Vision Transformer |  |
-| Swin Transformer | 52.38% |
+## Experiment result
 
-1. super resolution 성능 비교
-- ~ing
-
-|  | PSNR | SSIM |
+|  | PSNR(x2,x3,x4) | SSIM(x2,x3,x4) |
 | --- | --- | --- |
-| SwinIR |  |  |
+| DIV2K val | 35.59 |  |
+| Set5 |  |  |
+| Set14 |  |  |
+| B100 |  |  |
+| Urban 100 |  |  |
