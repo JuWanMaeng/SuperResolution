@@ -54,11 +54,6 @@ def main(scale=0):
         print('-'*60)
         print(f'epoch:{epoch}, current_lr:{current_lr}, iter:{step}')
         
-        if current_lr != get_lr(optimizer):   # lr이 감소하지 않은 상태면 이전 학습된 모델들중 제일 좋았던 모델을 불러온다.
-            print('Loading best model weights!')
-            model.load_state_dict(best_model_wts)
-        
-        
         model.train()
         train_tq=tqdm(train_dataloader, ncols=80, smoothing=0, bar_format='train: {desc}|{bar}{r_bar}')
         for imgs in train_tq:
@@ -72,8 +67,7 @@ def main(scale=0):
             output_img=model(LR_img)
             loss=criterion(output_img,HR_img)
             loss.backward()
-            optimizer.step()
-        scheduler.step()        
+            optimizer.step()        
         
         
         current_loss=0
@@ -103,18 +97,17 @@ def main(scale=0):
         epoch_loss=current_loss / 10
         
         
+        
         if epoch_loss < best_loss:
             best_loss = epoch_loss
             best_model_wts = copy.deepcopy(model.state_dict())
             torch.save(model.state_dict(), 'experiment/EDSR/best.pt')
             print('Copied best model weights!')
 
-        if current_lr != get_lr(optimizer):
+        scheduler.step()
+        if current_lr != get_lr(optimizer):   # lr이 감소하게 되면 이전 lr에서 학습된 모델들중 제일 좋았던 모델을 불러온다.
             print('Loading best model weights!')
             model.load_state_dict(best_model_wts)
-            
-           
-                
                 
         avg_psnr=psnr / 10
         avg_ssim=ssim / 10
@@ -122,18 +115,14 @@ def main(scale=0):
         
         print(f'epoch:{epoch}, iter:{step}, Average PSNR:{avg_psnr:.4f}, Average SSIM:{avg_ssim:.4f}, loss:{epoch_loss:.4f}\n')
         
-        if epoch % 10 ==0:
-            psnr_list=np.load('psnr.npy').tolist()
-            psnr_list.append(avg_psnr)
-            loss_list=np.load('loss.npy').tolist()
-            loss_list.append(epoch_loss)
-            np.save('psnr',psnr_list)
-            np.save('loss',loss_list)
+        
+        psnr_list=np.load('psnr.npy').tolist()
+        psnr_list.append(avg_psnr)
+        np.save('psnr',psnr_list)
+            
             
 
 if __name__ == '__main__':
     psnr_list=[]
-    loss_list=[]
-    np.save('loss',loss_list)
     np.save('psnr',psnr_list)
     main()
