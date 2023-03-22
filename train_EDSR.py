@@ -38,14 +38,15 @@ def main(scale=0):
     
     optimizer=optim.Adam(model.parameters(),lr=10e-4,betas=[0.9,0.999],eps=10e-8)
     criterion=nn.L1Loss()
-    scheduler = lr_scheduler.MultiStepLR(optimizer, milestones=[100000,200000,300000,400000], gamma=0.5)
+    scheduler = lr_scheduler.MultiStepLR(optimizer, milestones=[200,400,600,800], gamma=0.5)
     step=0
     best_loss=float('inf')
+    
 
-    for epoch in range(500000): 
+    for epoch in range(125000): 
         current_lr=optimizer.param_groups[0]['lr']
         print('-'*20)
-        print(f'epoch:{epoch+1}, current_lr:{current_lr}')
+        print(f'epoch:{epoch+1}, current_lr:{current_lr}, iter:{step}')
         model.train()
         train_tq=tqdm(train_dataloader, ncols=80, smoothing=0, bar_format='train: {desc}|{bar}{r_bar}')
         for imgs in train_tq:
@@ -62,7 +63,7 @@ def main(scale=0):
             optimizer.step()
         scheduler.step()        
         
-        if step%1300==0:
+        if step%390==0:
             current_loss=0
             psnr=0
             ssim=0
@@ -90,15 +91,19 @@ def main(scale=0):
             epoch_loss=current_loss / 10
             
             if best_loss > epoch_loss:
-                torch.save(model.state_dict(),f'experiment/SwinIR/best.pt')
+                torch.save(model.state_dict(),f'experiment/EDSR/best.pt')
                 
                 
-            avg_pnsr=psnr / 10
+            avg_psnr=psnr / 10
             avg_ssim=ssim / 10
+            psnr_list=np.load('psnr.npy').tolist()
+            psnr_list.append(avg_psnr)
+            np.save('psnr',psnr_list)
             
-            
-            print(f'epoch:{epoch+1}, iter:{step}, Average PSNR:{avg_pnsr:.4f}, Average SSIM:{avg_ssim:.4f}, loss:{epoch_loss:.4f}\n')
+            print(f'epoch:{epoch+1}, iter:{step}, Average PSNR:{avg_psnr:.4f}, Average SSIM:{avg_ssim:.4f}, loss:{epoch_loss:.4f}\n')
         
 
 if __name__ == '__main__':
+    psnr_list=[]
+    np.save('psnr',psnr_list)
     main()

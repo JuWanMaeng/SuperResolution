@@ -117,15 +117,5 @@ def main(scale=0):
             
 
 if __name__ == '__main__':
-   
-    device= 'cuda:0' if torch.cuda.is_available() else 'cpu'
-    model=EDSR(scale=2).to(device)
-    train_dataset=DatasetSR(phase='train')
-    val_dataset=DatasetSR(phase='val')
-    x=val_dataset[0]['L'].to(device)
-    y=val_dataset[0]['H'].to(device)
-    x=model(x)
-    print(x.shape,y.shape)
-    
-    
+   main()
     
