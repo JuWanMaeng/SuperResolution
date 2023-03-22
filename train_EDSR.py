@@ -118,14 +118,22 @@ def main(scale=0):
                 
         avg_psnr=psnr / 10
         avg_ssim=ssim / 10
-        psnr_list=np.load('psnr.npy').tolist()
-        psnr_list.append(avg_psnr)
-        np.save('psnr',psnr_list)
+        
         
         print(f'epoch:{epoch}, iter:{step}, Average PSNR:{avg_psnr:.4f}, Average SSIM:{avg_ssim:.4f}, loss:{epoch_loss:.4f}\n')
         
+        if epoch % 10 ==0:
+            psnr_list=np.load('psnr.npy').tolist()
+            psnr_list.append(avg_psnr)
+            loss_list=np.load('loss.npy').tolist()
+            loss_list.append(epoch_loss)
+            np.save('psnr',psnr_list)
+            np.save('loss',loss_list)
+            
 
 if __name__ == '__main__':
     psnr_list=[]
+    loss_list=[]
+    np.save('loss',loss_list)
     np.save('psnr',psnr_list)
     main()
