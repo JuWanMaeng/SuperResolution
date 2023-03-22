@@ -3,6 +3,7 @@ import torch
 import math
 '''
 EDSR
+https://github.com/sanghyun-son/EDSR-PyTorch
 depth(B): the number of layers = 32
 width(F): the number of feature channels = 64 or 256
 scaling factor = 0.1
