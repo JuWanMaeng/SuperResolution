@@ -35,7 +35,7 @@ def main(scale=0):
     
     train_dataset=DatasetSR(phase='train')
     val_dataset=DatasetSR(phase='val')
-    train_dataloader=DataLoader(train_dataset,batch_size=64,num_workers=16,shuffle=True)
+    train_dataloader=DataLoader(train_dataset,batch_size=16,num_workers=8,shuffle=True)
     val_dataloader=DataLoader(val_dataset,batch_size=1,num_workers=1,shuffle=True)
 
    
@@ -47,6 +47,7 @@ def main(scale=0):
     scheduler = lr_scheduler.MultiStepLR(optimizer, milestones=[180,360,540,720],gamma=0.5)
     step=0
     best_loss=float('inf')
+    best_psnr=0
     
 
     for epoch in range(1,801): 
@@ -57,7 +58,7 @@ def main(scale=0):
         model.train()
         train_tq=tqdm(train_dataloader, ncols=80, smoothing=0, bar_format='train: {desc}|{bar}{r_bar}')
         for imgs in train_tq:
-            step+=64                            # 이미지 한장을 1 step이라고 하자
+            step+=16                            # 이미지 한장을 1 step이라고 하자
             HR_img,LR_img=imgs['H'],imgs['L']
             HR_img=HR_img.to(device)
             LR_img=LR_img.to(device)
@@ -95,22 +96,31 @@ def main(scale=0):
                 
         
         epoch_loss=current_loss / 10
+        avg_psnr=psnr / 10
+        avg_ssim=ssim / 10
         
-        
+        if epoch % 20==0:
+            torch.save(model.state_dict(),f'experiment/EDSR/{step}_{psnr}_{loss}_.pt')
+            print('save step weights!')
         
         if epoch_loss < best_loss:
             best_loss = epoch_loss
             best_model_wts = copy.deepcopy(model.state_dict())
-            torch.save(model.state_dict(), 'experiment/EDSR/best.pt')
-            print('Copied best model weights!')
-
+            torch.save(model.state_dict(), 'experiment/EDSR/loss_best.pt')
+            print('Copied best loss model weights!')
+        
+        if best_psnr < avg_psnr:
+            best_psnr= avg_psnr
+            best_psnr_model_wts = copy.deepcopy(model.state_dict())
+            torch.save(model.state_dict(), 'experiment/EDSR/psnr_best.pt')
+            print('Copied best psnr model weights!')
+        
         scheduler.step()
-        if current_lr != get_lr(optimizer):   # lr이 감소하게 되면 이전 lr에서 학습된 모델들중 제일 좋았던 모델을 불러온다.
+        if current_lr != get_lr(optimizer):   # lr이 감소하게 되면 이전 lr에서 학습된 모델들중 loss가 제일 작았던 모델을 불러온다.
             print('Loading best model weights!')
             model.load_state_dict(best_model_wts)
                 
-        avg_psnr=psnr / 10
-        avg_ssim=ssim / 10
+        
         
         
         print(f'epoch:{epoch}, iter:{step}, Average PSNR:{avg_psnr:.4f}, Average SSIM:{avg_ssim:.4f}, loss:{epoch_loss:.4f}\n')
