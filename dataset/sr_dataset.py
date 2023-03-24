@@ -36,9 +36,9 @@ class DatasetSR(data.Dataset):
         # get paths of L/H
         # ------------------------------------
         
-        with open(f'dataset/{phase}_HR.json', 'r') as f:
+        with open(f'dataset/DIV2K/{phase}_HR.json', 'r') as f:
             self.imgs_H=json.load(f)
-        with open(f'dataset/{phase}_x2_LR.json','r') as f:
+        with open(f'dataset/DIV2K/{phase}_x2_LR.json','r') as f:
             self.imgs_L=json.load(f)
 
         assert self.imgs_H, 'Error: H imgs are empty.'
@@ -114,6 +114,13 @@ class DatasetSR(data.Dataset):
 
     def __len__(self):
         return len(self.imgs_H)
+
+
+
+
+
+
+
 
 
 

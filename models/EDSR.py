@@ -1,6 +1,7 @@
 import torch.nn as nn
 import torch
 import math
+from torchsummary import summary
 '''
 EDSR
 https://github.com/sanghyun-son/EDSR-PyTorch
@@ -70,10 +71,10 @@ class EDSR(nn.Module):
         super(EDSR,self).__init__()
         
         n_resblocks=32
-        n_feats=64
+        n_feats=256
         kernel_size=3
         scale=scale
-        res_scale=1
+        res_scale=0.1
         
         act=nn.ReLU(True)
         
@@ -116,4 +117,11 @@ class EDSR(nn.Module):
         
     
 
+if __name__ == '__main__':
+    model=EDSR(2).to('cuda:0')
+    height,width=48,48
     
+    print(summary(model,(3,height,width),device='cuda'))
+   
+
+

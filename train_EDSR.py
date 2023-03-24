@@ -35,7 +35,7 @@ def main(scale=0):
     
     train_dataset=DatasetSR(phase='train')
     val_dataset=DatasetSR(phase='val')
-    train_dataloader=DataLoader(train_dataset,batch_size=64,num_workers=16,shuffle=True)
+    train_dataloader=DataLoader(train_dataset,batch_size=16,num_workers=16,shuffle=True)
     val_dataloader=DataLoader(val_dataset,batch_size=1,num_workers=1,shuffle=True)
 
    
@@ -57,7 +57,7 @@ def main(scale=0):
         model.train()
         train_tq=tqdm(train_dataloader, ncols=80, smoothing=0, bar_format='train: {desc}|{bar}{r_bar}')
         for imgs in train_tq:
-            step+=64                            # 이미지 한장을 1 step이라고 하자
+            step+=16                         # 이미지 한장을 1 step이라고 하자
             HR_img,LR_img=imgs['H'],imgs['L']
             HR_img=HR_img.to(device)
             LR_img=LR_img.to(device)
