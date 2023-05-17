@@ -859,11 +859,11 @@ class SwinIR(nn.Module):
 
 if __name__ == '__main__':
     device= 'cuda:0' if torch.cuda.is_available() else 'cpu'
-    upscale = 4
+    upscale = 2
     window_size = 8
-    height = (1024 // upscale // window_size + 1) * window_size
-    width = (720 // upscale // window_size + 1) * window_size
-    model = SwinIR(upscale=4, img_size=(height, width),
+    height = 1024//2
+    width = 720//2
+    model = SwinIR(upscale=upscale,
                    window_size=window_size, img_range=1., depths=[6, 6, 6, 6],
                    embed_dim=60, num_heads=[6, 6, 6, 6], mlp_ratio=2, upsampler='pixelshuffle').to('cuda:0')
     

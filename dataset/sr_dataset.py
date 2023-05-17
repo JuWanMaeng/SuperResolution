@@ -29,7 +29,7 @@ class DatasetSR(data.Dataset):
         self.phase = phase
         self.n_channels =  3
         self.sf =  2
-        self.patch_size = 96
+        self.patch_size = 128
         self.L_size = self.patch_size // self.sf
 
         # ------------------------------------
@@ -52,7 +52,7 @@ class DatasetSR(data.Dataset):
         # get H image
         # ------------------------------------
         img_H=cv2.imread(self.imgs_H[index]['img'])
-        img_H=cv2.cvtColor(img_H,cv2.COLOR_BGR2RGB)
+        img_H=cv2.cvtColor(img_H,cv2.COLOR_BGR2RGB).astype(np.float32)/255.0
         # img_H=util.uint2single(img_H)
         
         # ------------------------------------
@@ -67,7 +67,7 @@ class DatasetSR(data.Dataset):
             # directly load L image
             # --------------------------------
             img_L=cv2.imread(self.imgs_L[index]['img'])
-            img_L=cv2.cvtColor(img_L,cv2.COLOR_BGR2RGB)
+            img_L=cv2.cvtColor(img_L,cv2.COLOR_BGR2RGB).astype(np.float32)/255.0
             # img_L=util.uint2single(img_L)
             
 
