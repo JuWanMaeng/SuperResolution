@@ -1,0 +1,33 @@
+max_epoch:2500, milestones:[1250, 1500, 2000, 2250]
+--------------------
+epoch:1, current_lr:0.0002
+/home/joowan/anaconda3/envs/swinir/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3483.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+
+train: |▊                                       | 4/200 [00:04<03:41,  1.13s/it]
+Traceback (most recent call last):
+  File "/home/joowan/Desktop/SuperResolution/train_swinIR.py", line 142, in <module>
+    main(scale=3,device=device)
+  File "/home/joowan/Desktop/SuperResolution/train_swinIR.py", line 74, in main
+    output_img=model(LR_img)
+  File "/home/joowan/anaconda3/envs/swinir/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/joowan/Desktop/SuperResolution/SwinIR.py", line 821, in forward
+    x = self.conv_after_body(self.forward_features(x)) + x
+  File "/home/joowan/Desktop/SuperResolution/SwinIR.py", line 804, in forward_features
+    x = layer(x, x_size)
+  File "/home/joowan/anaconda3/envs/swinir/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/joowan/Desktop/SuperResolution/SwinIR.py", line 485, in forward
+    return self.patch_embed(self.conv(self.patch_unembed(self.residual_group(x, x_size), x_size))) + x
+  File "/home/joowan/anaconda3/envs/swinir/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/joowan/Desktop/SuperResolution/SwinIR.py", line 405, in forward
+    x = blk(x, x_size)
+  File "/home/joowan/anaconda3/envs/swinir/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/joowan/Desktop/SuperResolution/SwinIR.py", line 265, in forward
+    attn_windows = self.attn(x_windows, mask=self.calculate_mask(x_size).to(x.device))
+  File "/home/joowan/Desktop/SuperResolution/SwinIR.py", line 238, in calculate_mask
+    attn_mask = attn_mask.masked_fill(attn_mask != 0, float(-100.0)).masked_fill(attn_mask == 0, float(0.0))
+KeyboardInterrupt

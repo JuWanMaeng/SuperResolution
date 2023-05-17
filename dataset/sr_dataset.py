@@ -1,7 +1,6 @@
 import torch
 from torch.utils.data import Dataset
 import os
-from torchvision import transforms,models
 import json
 from PIL import Image as im
 import cv2
@@ -24,13 +23,13 @@ class DatasetSR(data.Dataset):
     # -----------------------------------------
     '''
 
-    def __init__(self, phase):
+    def __init__(self, phase,scale):
         super(DatasetSR, self).__init__()
         self.phase = phase
         self.n_channels =  3
-        self.sf =  2
-        self.patch_size = 128
-        self.L_size = self.patch_size // self.sf
+        self.scale_factor =  scale
+        self.patch_size = 128 
+        self.L_size = self.patch_size // self.scale_factor
 
         # ------------------------------------
         # get paths of L/H
@@ -38,7 +37,7 @@ class DatasetSR(data.Dataset):
         
         with open(f'dataset/DIV2K/{phase}_HR.json', 'r') as f:
             self.imgs_H=json.load(f)
-        with open(f'dataset/DIV2K/{phase}_x2_LR.json','r') as f:
+        with open(f'dataset/DIV2K/{phase}_x{self.scale_factor}_LR.json','r') as f:
             self.imgs_L=json.load(f)
 
         assert self.imgs_H, 'Error: H imgs are empty.'
@@ -58,7 +57,7 @@ class DatasetSR(data.Dataset):
         # ------------------------------------
         # modcrop
         # ------------------------------------
-        img_H = util.modcrop(img_H, self.sf)
+        img_H = util.modcrop(img_H, self.scale_factor)
         # ------------------------------------
         # get L image
         # ------------------------------------
@@ -76,7 +75,7 @@ class DatasetSR(data.Dataset):
             # sythesize L image via matlab's bicubic
             # --------------------------------
             H, W = img_H.shape[:2]
-            img_L = util.imresize_np(img_H, 1 / self.sf, True)
+            img_L = util.imresize_np(img_H, 1 / self.scale_factor, True)
 
         # ------------------------------------
         # if train, get L/H patch pair
@@ -95,9 +94,11 @@ class DatasetSR(data.Dataset):
             # --------------------------------
             # crop corresponding H patch
             # --------------------------------
-            rnd_h_H, rnd_w_H = int(rnd_h * self.sf), int(rnd_w * self.sf)
+            rnd_h_H, rnd_w_H = int(rnd_h * self.scale_factor), int(rnd_w * self.scale_factor)
             img_H = img_H[rnd_h_H:rnd_h_H + self.patch_size, rnd_w_H:rnd_w_H + self.patch_size, :]
-          
+            if img_H.shape[0]!=img_H.shape[1]:
+                img_H=cv2.resize(img_H,(self.patch_size,self.patch_size))
+            
             # --------------------------------
             # augmentation - flip and/or rotate
             # --------------------------------

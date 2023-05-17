@@ -1,0 +1,38 @@
+2023-05-17 20:34:24,334 INFO    MainThread:11414 [wandb_setup.py:_flush():76] Current SDK version is 0.15.2
+2023-05-17 20:34:24,334 INFO    MainThread:11414 [wandb_setup.py:_flush():76] Configure stats pid to 11414
+2023-05-17 20:34:24,334 INFO    MainThread:11414 [wandb_setup.py:_flush():76] Loading settings from /home/joowan/.config/wandb/settings
+2023-05-17 20:34:24,334 INFO    MainThread:11414 [wandb_setup.py:_flush():76] Loading settings from /home/joowan/Desktop/SuperResolution/wandb/settings
+2023-05-17 20:34:24,334 INFO    MainThread:11414 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2023-05-17 20:34:24,334 INFO    MainThread:11414 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2023-05-17 20:34:24,334 INFO    MainThread:11414 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'train_swinIR.py', 'program': '/home/joowan/Desktop/SuperResolution/train_swinIR.py'}
+2023-05-17 20:34:24,334 INFO    MainThread:11414 [wandb_init.py:_log_setup():507] Logging user logs to /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203424-a0h8a9yg/logs/debug.log
+2023-05-17 20:34:24,335 INFO    MainThread:11414 [wandb_init.py:_log_setup():508] Logging internal logs to /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203424-a0h8a9yg/logs/debug-internal.log
+2023-05-17 20:34:24,335 INFO    MainThread:11414 [wandb_init.py:init():547] calling init triggers
+2023-05-17 20:34:24,335 INFO    MainThread:11414 [wandb_init.py:init():554] wandb.init called with sweep_config: {}
+config: {}
+2023-05-17 20:34:24,335 INFO    MainThread:11414 [wandb_init.py:init():596] starting backend
+2023-05-17 20:34:24,335 INFO    MainThread:11414 [wandb_init.py:init():600] setting up manager
+2023-05-17 20:34:24,338 INFO    MainThread:11414 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2023-05-17 20:34:24,341 INFO    MainThread:11414 [wandb_init.py:init():606] backend started and connected
+2023-05-17 20:34:24,345 INFO    MainThread:11414 [wandb_init.py:init():700] updated telemetry
+2023-05-17 20:34:24,361 INFO    MainThread:11414 [wandb_init.py:init():737] communicating run to backend with 60.0 second timeout
+2023-05-17 20:34:24,921 INFO    MainThread:11414 [wandb_run.py:_on_init():2177] communicating current version
+2023-05-17 20:34:24,927 WARNING MainThread:11414 [wandb_init.py:init():1172] interrupted
+Traceback (most recent call last):
+  File "/home/joowan/anaconda3/envs/swinir/lib/python3.9/site-packages/wandb/sdk/wandb_init.py", line 1150, in init
+    run = wi.init()
+  File "/home/joowan/anaconda3/envs/swinir/lib/python3.9/site-packages/wandb/sdk/wandb_init.py", line 785, in init
+    run._on_init()
+  File "/home/joowan/anaconda3/envs/swinir/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 2181, in _on_init
+    version_result = version_handle.wait(timeout=30)
+  File "/home/joowan/anaconda3/envs/swinir/lib/python3.9/site-packages/wandb/sdk/lib/mailbox.py", line 283, in wait
+    found, abandoned = self._slot._get_and_clear(timeout=wait_timeout)
+  File "/home/joowan/anaconda3/envs/swinir/lib/python3.9/site-packages/wandb/sdk/lib/mailbox.py", line 130, in _get_and_clear
+    if self._wait(timeout=timeout):
+  File "/home/joowan/anaconda3/envs/swinir/lib/python3.9/site-packages/wandb/sdk/lib/mailbox.py", line 126, in _wait
+    return self._event.wait(timeout=timeout)
+  File "/home/joowan/anaconda3/envs/swinir/lib/python3.9/threading.py", line 581, in wait
+    signaled = self._cond.wait(timeout)
+  File "/home/joowan/anaconda3/envs/swinir/lib/python3.9/threading.py", line 316, in wait
+    gotit = waiter.acquire(True, timeout)
+KeyboardInterrupt

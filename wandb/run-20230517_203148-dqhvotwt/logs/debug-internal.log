@@ -1,0 +1,188 @@
+2023-05-17 20:31:48,228 INFO    StreamThr :7842 [internal.py:wandb_internal():86] W&B internal server running at pid: 7842, started at: 2023-05-17 20:31:48.228308
+2023-05-17 20:31:48,231 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: status
+2023-05-17 20:31:48,234 INFO    WriterThread:7842 [datastore.py:open_for_write():85] open: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/run-dqhvotwt.wandb
+2023-05-17 20:31:48,235 DEBUG   SenderThread:7842 [sender.py:send():375] send: header
+2023-05-17 20:31:48,252 DEBUG   SenderThread:7842 [sender.py:send():375] send: run
+2023-05-17 20:31:49,045 INFO    SenderThread:7842 [dir_watcher.py:__init__():219] watching files in: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files
+2023-05-17 20:31:49,045 INFO    SenderThread:7842 [sender.py:_start_run_threads():1124] run started: dqhvotwt with start time 1684323108.228781
+2023-05-17 20:31:49,045 DEBUG   SenderThread:7842 [sender.py:send_request():402] send_request: summary_record
+2023-05-17 20:31:49,045 INFO    SenderThread:7842 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-17 20:31:49,047 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: check_version
+2023-05-17 20:31:49,047 DEBUG   SenderThread:7842 [sender.py:send_request():402] send_request: check_version
+2023-05-17 20:31:49,165 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: run_start
+2023-05-17 20:31:49,178 DEBUG   HandlerThread:7842 [system_info.py:__init__():31] System info init
+2023-05-17 20:31:49,179 DEBUG   HandlerThread:7842 [system_info.py:__init__():46] System info init done
+2023-05-17 20:31:49,179 INFO    HandlerThread:7842 [system_monitor.py:start():181] Starting system monitor
+2023-05-17 20:31:49,179 INFO    SystemMonitor:7842 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-05-17 20:31:49,179 INFO    HandlerThread:7842 [system_monitor.py:probe():201] Collecting system info
+2023-05-17 20:31:49,180 INFO    SystemMonitor:7842 [interfaces.py:start():190] Started cpu monitoring
+2023-05-17 20:31:49,180 INFO    SystemMonitor:7842 [interfaces.py:start():190] Started disk monitoring
+2023-05-17 20:31:49,182 INFO    SystemMonitor:7842 [interfaces.py:start():190] Started gpu monitoring
+2023-05-17 20:31:49,183 INFO    SystemMonitor:7842 [interfaces.py:start():190] Started memory monitoring
+2023-05-17 20:31:49,184 INFO    SystemMonitor:7842 [interfaces.py:start():190] Started network monitoring
+2023-05-17 20:31:49,224 DEBUG   HandlerThread:7842 [system_info.py:probe():195] Probing system
+2023-05-17 20:31:49,234 DEBUG   HandlerThread:7842 [system_info.py:_probe_git():180] Probing git
+2023-05-17 20:31:49,247 DEBUG   HandlerThread:7842 [system_info.py:_probe_git():188] Probing git done
+2023-05-17 20:31:49,247 DEBUG   HandlerThread:7842 [system_info.py:probe():240] Probing system done
+2023-05-17 20:31:49,247 DEBUG   HandlerThread:7842 [system_monitor.py:probe():210] {'os': 'Linux-5.4.0-137-generic-x86_64-with-glibc2.27', 'python': '3.9.16', 'heartbeatAt': '2023-05-17T11:31:49.225062', 'startedAt': '2023-05-17T11:31:48.213613', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/home/joowan/Desktop/SuperResolution/train_swinIR.py', 'codePath': 'train_swinIR.py', 'git': {'remote': 'https://github.com/JuWanMaeng/SuperResolution', 'commit': '9fdddd98e067a6d7f7f2c4bdc0ca8aa4fa7c7288'}, 'email': 'aodwndhks@gmail.com', 'root': '/home/joowan/Desktop/SuperResolution', 'host': 'user1', 'username': 'joowan', 'executable': '/home/joowan/anaconda3/envs/swinir/bin/python', 'cpu_count': 18, 'cpu_count_logical': 36, 'cpu_freq': {'current': 1.5459166666666664, 'min': 1200.0, 'max': 4633.333333333333}, 'cpu_freq_per_core': [{'current': 1.2, 'min': 1200.0, 'max': 4600.0}, {'current': 1.199, 'min': 1200.0, 'max': 4600.0}, {'current': 1.2, 'min': 1200.0, 'max': 4600.0}, {'current': 1.2, 'min': 1200.0, 'max': 4600.0}, {'current': 1.2, 'min': 1200.0, 'max': 4600.0}, {'current': 1.2, 'min': 1200.0, 'max': 4600.0}, {'current': 1.2, 'min': 1200.0, 'max': 4600.0}, {'current': 4.087, 'min': 1200.0, 'max': 4800.0}, {'current': 1.3, 'min': 1200.0, 'max': 4700.0}, {'current': 3.864, 'min': 1200.0, 'max': 4800.0}, {'current': 1.2, 'min': 1200.0, 'max': 4600.0}, {'current': 1.2, 'min': 1200.0, 'max': 4600.0}, {'current': 1.2, 'min': 1200.0, 'max': 4600.0}, {'current': 1.2, 'min': 1200.0, 'max': 4600.0}, {'current': 1.2, 'min': 1200.0, 'max': 4600.0}, {'current': 1.2, 'min': 1200.0, 'max': 4600.0}, {'current': 1.27, 'min': 1200.0, 'max': 4600.0}, {'current': 1.3, 'min': 1200.0, 'max': 4700.0}, {'current': 1.199, 'min': 1200.0, 'max': 4600.0}, {'current': 1.199, 'min': 1200.0, 'max': 4600.0}, {'current': 1.199, 'min': 1200.0, 'max': 4600.0}, {'current': 1.199, 'min': 1200.0, 'max': 4600.0}, {'current': 1.199, 'min': 1200.0, 'max': 4600.0}, {'current': 1.204, 'min': 1200.0, 'max': 4600.0}, {'current': 1.199, 'min': 1200.0, 'max': 4600.0}, {'current': 4.269, 'min': 1200.0, 'max': 4800.0}, {'current': 1.299, 'min': 1200.0, 'max': 4700.0}, {'current': 3.392, 'min': 1200.0, 'max': 4800.0}, {'current': 1.2, 'min': 1200.0, 'max': 4600.0}, {'current': 1.199, 'min': 1200.0, 'max': 4600.0}, {'current': 1.199, 'min': 1200.0, 'max': 4600.0}, {'current': 1.2, 'min': 1200.0, 'max': 4600.0}, {'current': 1.199, 'min': 1200.0, 'max': 4600.0}, {'current': 1.199, 'min': 1200.0, 'max': 4600.0}, {'current': 1.448, 'min': 1200.0, 'max': 4600.0}, {'current': 1.299, 'min': 1200.0, 'max': 4700.0}], 'disk': {'total': 915.3232879638672, 'used': 544.3028907775879}, 'gpu': 'NVIDIA GeForce RTX 3090', 'gpu_count': 4, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 3090', 'memory_total': 25769803776}, {'name': 'NVIDIA GeForce RTX 3090', 'memory_total': 25769803776}, {'name': 'NVIDIA GeForce RTX 3090', 'memory_total': 25769803776}, {'name': 'NVIDIA GeForce RTX 3090', 'memory_total': 25769803776}], 'memory': {'total': 62.49541091918945}}
+2023-05-17 20:31:49,247 INFO    HandlerThread:7842 [system_monitor.py:probe():211] Finished collecting system info
+2023-05-17 20:31:49,247 INFO    HandlerThread:7842 [system_monitor.py:probe():214] Publishing system info
+2023-05-17 20:31:49,247 DEBUG   HandlerThread:7842 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-05-17 20:31:49,248 DEBUG   HandlerThread:7842 [system_info.py:_save_pip():67] Saving pip packages done
+2023-05-17 20:31:49,248 DEBUG   HandlerThread:7842 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2023-05-17 20:31:50,049 INFO    Thread-12 :7842 [dir_watcher.py:_on_file_created():278] file/dir created: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files/requirements.txt
+2023-05-17 20:31:50,050 INFO    Thread-12 :7842 [dir_watcher.py:_on_file_created():278] file/dir created: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files/conda-environment.yaml
+2023-05-17 20:31:50,050 INFO    Thread-12 :7842 [dir_watcher.py:_on_file_created():278] file/dir created: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files/wandb-summary.json
+2023-05-17 20:31:51,532 DEBUG   HandlerThread:7842 [system_info.py:_save_conda():86] Saving conda packages done
+2023-05-17 20:31:51,532 INFO    HandlerThread:7842 [system_monitor.py:probe():216] Finished publishing system info
+2023-05-17 20:31:51,535 DEBUG   SenderThread:7842 [sender.py:send():375] send: files
+2023-05-17 20:31:51,535 INFO    SenderThread:7842 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2023-05-17 20:31:51,540 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-17 20:31:51,541 DEBUG   SenderThread:7842 [sender.py:send_request():402] send_request: stop_status
+2023-05-17 20:31:51,854 DEBUG   SenderThread:7842 [sender.py:send():375] send: telemetry
+2023-05-17 20:31:51,855 DEBUG   SenderThread:7842 [sender.py:send():375] send: telemetry
+2023-05-17 20:31:51,855 DEBUG   SenderThread:7842 [sender.py:send():375] send: run
+2023-05-17 20:31:52,050 INFO    Thread-12 :7842 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files/conda-environment.yaml
+2023-05-17 20:31:52,050 INFO    Thread-12 :7842 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files/config.yaml
+2023-05-17 20:31:52,050 INFO    Thread-12 :7842 [dir_watcher.py:_on_file_created():278] file/dir created: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files/wandb-metadata.json
+2023-05-17 20:31:52,162 INFO    SenderThread:7842 [sender.py:send_run():1002] updated run: dqhvotwt
+2023-05-17 20:31:52,164 DEBUG   SenderThread:7842 [sender.py:send():375] send: exit
+2023-05-17 20:31:52,164 INFO    SenderThread:7842 [sender.py:send_exit():598] handling exit code: 1
+2023-05-17 20:31:52,165 INFO    SenderThread:7842 [sender.py:send_exit():600] handling runtime: 2
+2023-05-17 20:31:52,165 INFO    SenderThread:7842 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-17 20:31:52,165 INFO    SenderThread:7842 [sender.py:send_exit():606] send defer
+2023-05-17 20:31:52,166 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: defer
+2023-05-17 20:31:52,166 INFO    HandlerThread:7842 [handler.py:handle_request_defer():170] handle defer: 0
+2023-05-17 20:31:52,166 DEBUG   SenderThread:7842 [sender.py:send_request():402] send_request: defer
+2023-05-17 20:31:52,166 INFO    SenderThread:7842 [sender.py:send_request_defer():622] handle sender defer: 0
+2023-05-17 20:31:52,167 INFO    SenderThread:7842 [sender.py:transition_state():626] send defer: 1
+2023-05-17 20:31:52,167 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: defer
+2023-05-17 20:31:52,167 INFO    HandlerThread:7842 [handler.py:handle_request_defer():170] handle defer: 1
+2023-05-17 20:31:52,167 DEBUG   SenderThread:7842 [sender.py:send_request():402] send_request: defer
+2023-05-17 20:31:52,167 INFO    SenderThread:7842 [sender.py:send_request_defer():622] handle sender defer: 1
+2023-05-17 20:31:52,167 INFO    SenderThread:7842 [sender.py:transition_state():626] send defer: 2
+2023-05-17 20:31:52,167 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: defer
+2023-05-17 20:31:52,167 INFO    HandlerThread:7842 [handler.py:handle_request_defer():170] handle defer: 2
+2023-05-17 20:31:52,168 INFO    HandlerThread:7842 [system_monitor.py:finish():190] Stopping system monitor
+2023-05-17 20:31:52,168 DEBUG   SystemMonitor:7842 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-05-17 20:31:52,169 INFO    HandlerThread:7842 [interfaces.py:finish():202] Joined cpu monitor
+2023-05-17 20:31:52,169 DEBUG   SystemMonitor:7842 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-05-17 20:31:52,169 INFO    HandlerThread:7842 [interfaces.py:finish():202] Joined disk monitor
+2023-05-17 20:31:52,169 DEBUG   SystemMonitor:7842 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-05-17 20:31:52,308 INFO    wandb-upload_0:7842 [upload_job.py:push():137] Uploaded file /tmp/tmpblgi65l5wandb/h4p8tx2j-wandb-metadata.json
+2023-05-17 20:31:52,473 INFO    HandlerThread:7842 [interfaces.py:finish():202] Joined gpu monitor
+2023-05-17 20:31:52,474 INFO    HandlerThread:7842 [interfaces.py:finish():202] Joined memory monitor
+2023-05-17 20:31:52,474 INFO    HandlerThread:7842 [interfaces.py:finish():202] Joined network monitor
+2023-05-17 20:31:52,474 DEBUG   SenderThread:7842 [sender.py:send_request():402] send_request: defer
+2023-05-17 20:31:52,474 INFO    SenderThread:7842 [sender.py:send_request_defer():622] handle sender defer: 2
+2023-05-17 20:31:52,474 INFO    SenderThread:7842 [sender.py:transition_state():626] send defer: 3
+2023-05-17 20:31:52,474 DEBUG   SenderThread:7842 [sender.py:send():375] send: stats
+2023-05-17 20:31:52,474 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: defer
+2023-05-17 20:31:52,475 INFO    HandlerThread:7842 [handler.py:handle_request_defer():170] handle defer: 3
+2023-05-17 20:31:52,475 DEBUG   SenderThread:7842 [sender.py:send_request():402] send_request: defer
+2023-05-17 20:31:52,475 INFO    SenderThread:7842 [sender.py:send_request_defer():622] handle sender defer: 3
+2023-05-17 20:31:52,475 INFO    SenderThread:7842 [sender.py:transition_state():626] send defer: 4
+2023-05-17 20:31:52,475 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: defer
+2023-05-17 20:31:52,475 INFO    HandlerThread:7842 [handler.py:handle_request_defer():170] handle defer: 4
+2023-05-17 20:31:52,475 DEBUG   SenderThread:7842 [sender.py:send_request():402] send_request: defer
+2023-05-17 20:31:52,475 INFO    SenderThread:7842 [sender.py:send_request_defer():622] handle sender defer: 4
+2023-05-17 20:31:52,475 INFO    SenderThread:7842 [sender.py:transition_state():626] send defer: 5
+2023-05-17 20:31:52,475 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: defer
+2023-05-17 20:31:52,475 INFO    HandlerThread:7842 [handler.py:handle_request_defer():170] handle defer: 5
+2023-05-17 20:31:52,475 DEBUG   SenderThread:7842 [sender.py:send():375] send: summary
+2023-05-17 20:31:52,476 INFO    SenderThread:7842 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-17 20:31:52,476 DEBUG   SenderThread:7842 [sender.py:send_request():402] send_request: defer
+2023-05-17 20:31:52,476 INFO    SenderThread:7842 [sender.py:send_request_defer():622] handle sender defer: 5
+2023-05-17 20:31:52,476 INFO    SenderThread:7842 [sender.py:transition_state():626] send defer: 6
+2023-05-17 20:31:52,476 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: defer
+2023-05-17 20:31:52,476 INFO    HandlerThread:7842 [handler.py:handle_request_defer():170] handle defer: 6
+2023-05-17 20:31:52,476 DEBUG   SenderThread:7842 [sender.py:send_request():402] send_request: defer
+2023-05-17 20:31:52,476 INFO    SenderThread:7842 [sender.py:send_request_defer():622] handle sender defer: 6
+2023-05-17 20:31:52,479 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: status_report
+2023-05-17 20:31:52,574 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: poll_exit
+2023-05-17 20:31:52,755 INFO    SenderThread:7842 [sender.py:transition_state():626] send defer: 7
+2023-05-17 20:31:52,756 DEBUG   SenderThread:7842 [sender.py:send_request():402] send_request: poll_exit
+2023-05-17 20:31:52,756 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: defer
+2023-05-17 20:31:52,756 INFO    HandlerThread:7842 [handler.py:handle_request_defer():170] handle defer: 7
+2023-05-17 20:31:52,756 DEBUG   SenderThread:7842 [sender.py:send_request():402] send_request: defer
+2023-05-17 20:31:52,756 INFO    SenderThread:7842 [sender.py:send_request_defer():622] handle sender defer: 7
+2023-05-17 20:31:53,051 INFO    Thread-12 :7842 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files/config.yaml
+2023-05-17 20:31:53,051 INFO    Thread-12 :7842 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files/wandb-summary.json
+2023-05-17 20:31:53,051 INFO    Thread-12 :7842 [dir_watcher.py:_on_file_created():278] file/dir created: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files/output.log
+2023-05-17 20:31:53,576 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: poll_exit
+2023-05-17 20:31:55,052 INFO    Thread-12 :7842 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files/output.log
+2023-05-17 20:31:56,174 INFO    SenderThread:7842 [sender.py:transition_state():626] send defer: 8
+2023-05-17 20:31:56,175 DEBUG   SenderThread:7842 [sender.py:send_request():402] send_request: poll_exit
+2023-05-17 20:31:56,175 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: defer
+2023-05-17 20:31:56,175 INFO    HandlerThread:7842 [handler.py:handle_request_defer():170] handle defer: 8
+2023-05-17 20:31:56,175 DEBUG   SenderThread:7842 [sender.py:send_request():402] send_request: defer
+2023-05-17 20:31:56,176 INFO    SenderThread:7842 [sender.py:send_request_defer():622] handle sender defer: 8
+2023-05-17 20:31:56,195 INFO    SenderThread:7842 [sender.py:transition_state():626] send defer: 9
+2023-05-17 20:31:56,195 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: defer
+2023-05-17 20:31:56,195 INFO    HandlerThread:7842 [handler.py:handle_request_defer():170] handle defer: 9
+2023-05-17 20:31:56,195 DEBUG   SenderThread:7842 [sender.py:send():375] send: artifact
+2023-05-17 20:31:57,052 INFO    Thread-12 :7842 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files/output.log
+2023-05-17 20:31:57,705 INFO    wandb-upload_0:7842 [upload_job.py:push():92] Skipped uploading /home/joowan/.local/share/wandb/artifacts/staging/tmp_c4vwx__
+2023-05-17 20:31:58,273 INFO    wandb-upload_1:7842 [upload_job.py:push():95] Uploaded file /home/joowan/.local/share/wandb/artifacts/staging/tmpztdm9cd5
+2023-05-17 20:31:58,578 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: keepalive
+2023-05-17 20:31:59,723 INFO    SenderThread:7842 [sender.py:send_artifact():1474] sent artifact job-https___github.com_JuWanMaeng_SuperResolution_train_swinIR.py - {'id': 'QXJ0aWZhY3Q6NDU4MTM0MTMz', 'digest': '5a7c48f16a839fe977b6ec1157663514', 'state': 'PENDING', 'aliases': [], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjY5OTYwODkz', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6NDU3OTQ5MDM0', 'versionIndex': 0}}, 'version': 'latest'}
+2023-05-17 20:31:59,723 DEBUG   SenderThread:7842 [sender.py:send_request():402] send_request: defer
+2023-05-17 20:31:59,723 INFO    SenderThread:7842 [sender.py:send_request_defer():622] handle sender defer: 9
+2023-05-17 20:31:59,723 INFO    SenderThread:7842 [dir_watcher.py:finish():365] shutting down directory watcher
+2023-05-17 20:32:00,054 INFO    SenderThread:7842 [dir_watcher.py:finish():395] scan: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files
+2023-05-17 20:32:00,054 INFO    SenderThread:7842 [dir_watcher.py:finish():409] scan save: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files/config.yaml config.yaml
+2023-05-17 20:32:00,054 INFO    SenderThread:7842 [dir_watcher.py:finish():409] scan save: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files/wandb-metadata.json wandb-metadata.json
+2023-05-17 20:32:00,054 INFO    SenderThread:7842 [dir_watcher.py:finish():409] scan save: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files/wandb-summary.json wandb-summary.json
+2023-05-17 20:32:00,054 INFO    SenderThread:7842 [dir_watcher.py:finish():409] scan save: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files/requirements.txt requirements.txt
+2023-05-17 20:32:00,054 INFO    SenderThread:7842 [dir_watcher.py:finish():409] scan save: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files/output.log output.log
+2023-05-17 20:32:00,055 INFO    SenderThread:7842 [dir_watcher.py:finish():409] scan save: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files/conda-environment.yaml conda-environment.yaml
+2023-05-17 20:32:00,055 INFO    SenderThread:7842 [sender.py:transition_state():626] send defer: 10
+2023-05-17 20:32:00,062 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: defer
+2023-05-17 20:32:00,066 INFO    HandlerThread:7842 [handler.py:handle_request_defer():170] handle defer: 10
+2023-05-17 20:32:00,067 DEBUG   SenderThread:7842 [sender.py:send_request():402] send_request: defer
+2023-05-17 20:32:00,076 INFO    SenderThread:7842 [sender.py:send_request_defer():622] handle sender defer: 10
+2023-05-17 20:32:00,076 INFO    SenderThread:7842 [file_pusher.py:finish():167] shutting down file pusher
+2023-05-17 20:32:00,696 INFO    wandb-upload_1:7842 [upload_job.py:push():137] Uploaded file /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files/wandb-summary.json
+2023-05-17 20:32:00,841 INFO    wandb-upload_2:7842 [upload_job.py:push():137] Uploaded file /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files/requirements.txt
+2023-05-17 20:32:00,893 INFO    wandb-upload_3:7842 [upload_job.py:push():137] Uploaded file /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files/output.log
+2023-05-17 20:32:00,951 INFO    wandb-upload_4:7842 [upload_job.py:push():137] Uploaded file /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files/conda-environment.yaml
+2023-05-17 20:32:00,973 INFO    wandb-upload_0:7842 [upload_job.py:push():137] Uploaded file /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/files/config.yaml
+2023-05-17 20:32:01,173 INFO    Thread-11 :7842 [sender.py:transition_state():626] send defer: 11
+2023-05-17 20:32:01,174 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: defer
+2023-05-17 20:32:01,174 INFO    HandlerThread:7842 [handler.py:handle_request_defer():170] handle defer: 11
+2023-05-17 20:32:01,175 DEBUG   SenderThread:7842 [sender.py:send_request():402] send_request: defer
+2023-05-17 20:32:01,175 INFO    SenderThread:7842 [sender.py:send_request_defer():622] handle sender defer: 11
+2023-05-17 20:32:01,175 INFO    SenderThread:7842 [file_pusher.py:join():172] waiting for file pusher
+2023-05-17 20:32:01,175 INFO    SenderThread:7842 [sender.py:transition_state():626] send defer: 12
+2023-05-17 20:32:01,175 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: defer
+2023-05-17 20:32:01,175 INFO    HandlerThread:7842 [handler.py:handle_request_defer():170] handle defer: 12
+2023-05-17 20:32:01,175 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: status_report
+2023-05-17 20:32:01,176 DEBUG   SenderThread:7842 [sender.py:send_request():402] send_request: defer
+2023-05-17 20:32:01,176 INFO    SenderThread:7842 [sender.py:send_request_defer():622] handle sender defer: 12
+2023-05-17 20:32:01,405 INFO    SenderThread:7842 [sender.py:transition_state():626] send defer: 13
+2023-05-17 20:32:01,405 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: defer
+2023-05-17 20:32:01,405 INFO    HandlerThread:7842 [handler.py:handle_request_defer():170] handle defer: 13
+2023-05-17 20:32:01,406 DEBUG   SenderThread:7842 [sender.py:send_request():402] send_request: defer
+2023-05-17 20:32:01,406 INFO    SenderThread:7842 [sender.py:send_request_defer():622] handle sender defer: 13
+2023-05-17 20:32:01,406 INFO    SenderThread:7842 [sender.py:transition_state():626] send defer: 14
+2023-05-17 20:32:01,406 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: defer
+2023-05-17 20:32:01,406 DEBUG   SenderThread:7842 [sender.py:send():375] send: final
+2023-05-17 20:32:01,406 INFO    HandlerThread:7842 [handler.py:handle_request_defer():170] handle defer: 14
+2023-05-17 20:32:01,407 DEBUG   SenderThread:7842 [sender.py:send():375] send: footer
+2023-05-17 20:32:01,407 DEBUG   SenderThread:7842 [sender.py:send_request():402] send_request: defer
+2023-05-17 20:32:01,407 INFO    SenderThread:7842 [sender.py:send_request_defer():622] handle sender defer: 14
+2023-05-17 20:32:01,408 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: poll_exit
+2023-05-17 20:32:01,408 DEBUG   SenderThread:7842 [sender.py:send_request():402] send_request: poll_exit
+2023-05-17 20:32:01,409 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: server_info
+2023-05-17 20:32:01,409 DEBUG   SenderThread:7842 [sender.py:send_request():402] send_request: server_info
+2023-05-17 20:32:01,413 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: get_summary
+2023-05-17 20:32:01,414 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: sampled_history
+2023-05-17 20:32:01,616 INFO    MainThread:7842 [wandb_run.py:_footer_history_summary_info():3469] rendering history
+2023-05-17 20:32:01,616 INFO    MainThread:7842 [wandb_run.py:_footer_history_summary_info():3501] rendering summary
+2023-05-17 20:32:01,616 INFO    MainThread:7842 [wandb_run.py:_footer_sync_info():3428] logging synced files
+2023-05-17 20:32:01,617 DEBUG   HandlerThread:7842 [handler.py:handle_request():144] handle_request: shutdown
+2023-05-17 20:32:01,617 INFO    HandlerThread:7842 [handler.py:finish():845] shutting down handler
+2023-05-17 20:32:02,409 INFO    WriterThread:7842 [datastore.py:close():298] close: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203148-dqhvotwt/run-dqhvotwt.wandb
+2023-05-17 20:32:02,616 INFO    SenderThread:7842 [sender.py:finish():1550] shutting down sender
+2023-05-17 20:32:02,616 INFO    SenderThread:7842 [file_pusher.py:finish():167] shutting down file pusher
+2023-05-17 20:32:02,616 INFO    SenderThread:7842 [file_pusher.py:join():172] waiting for file pusher

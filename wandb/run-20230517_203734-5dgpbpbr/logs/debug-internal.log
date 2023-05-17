@@ -1,0 +1,91 @@
+2023-05-17 20:37:34,622 INFO    StreamThr :19591 [internal.py:wandb_internal():86] W&B internal server running at pid: 19591, started at: 2023-05-17 20:37:34.620948
+2023-05-17 20:37:34,629 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: status
+2023-05-17 20:37:34,635 INFO    WriterThread:19591 [datastore.py:open_for_write():85] open: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203734-5dgpbpbr/run-5dgpbpbr.wandb
+2023-05-17 20:37:34,641 DEBUG   SenderThread:19591 [sender.py:send():375] send: header
+2023-05-17 20:37:34,657 DEBUG   SenderThread:19591 [sender.py:send():375] send: run
+2023-05-17 20:37:35,231 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: check_version
+2023-05-17 20:37:35,241 INFO    SenderThread:19591 [dir_watcher.py:__init__():219] watching files in: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203734-5dgpbpbr/files
+2023-05-17 20:37:35,241 INFO    SenderThread:19591 [sender.py:_start_run_threads():1124] run started: 5dgpbpbr with start time 1684323454.62397
+2023-05-17 20:37:35,242 DEBUG   SenderThread:19591 [sender.py:send_request():402] send_request: summary_record
+2023-05-17 20:37:35,242 INFO    SenderThread:19591 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-17 20:37:35,243 DEBUG   SenderThread:19591 [sender.py:send_request():402] send_request: check_version
+2023-05-17 20:37:35,298 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: run_start
+2023-05-17 20:37:35,305 DEBUG   HandlerThread:19591 [system_info.py:__init__():31] System info init
+2023-05-17 20:37:35,306 DEBUG   HandlerThread:19591 [system_info.py:__init__():46] System info init done
+2023-05-17 20:37:35,306 INFO    HandlerThread:19591 [system_monitor.py:start():181] Starting system monitor
+2023-05-17 20:37:35,307 INFO    HandlerThread:19591 [system_monitor.py:probe():201] Collecting system info
+2023-05-17 20:37:35,308 INFO    SystemMonitor:19591 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-05-17 20:37:35,312 INFO    SystemMonitor:19591 [interfaces.py:start():190] Started cpu monitoring
+2023-05-17 20:37:35,314 INFO    SystemMonitor:19591 [interfaces.py:start():190] Started disk monitoring
+2023-05-17 20:37:35,319 INFO    SystemMonitor:19591 [interfaces.py:start():190] Started gpu monitoring
+2023-05-17 20:37:35,320 INFO    SystemMonitor:19591 [interfaces.py:start():190] Started memory monitoring
+2023-05-17 20:37:35,322 INFO    SystemMonitor:19591 [interfaces.py:start():190] Started network monitoring
+2023-05-17 20:37:35,377 DEBUG   HandlerThread:19591 [system_info.py:probe():195] Probing system
+2023-05-17 20:37:35,387 DEBUG   HandlerThread:19591 [system_info.py:_probe_git():180] Probing git
+2023-05-17 20:37:35,409 DEBUG   HandlerThread:19591 [system_info.py:_probe_git():188] Probing git done
+2023-05-17 20:37:35,409 DEBUG   HandlerThread:19591 [system_info.py:probe():240] Probing system done
+2023-05-17 20:37:35,409 DEBUG   HandlerThread:19591 [system_monitor.py:probe():210] {'os': 'Linux-5.4.0-137-generic-x86_64-with-glibc2.27', 'python': '3.9.16', 'heartbeatAt': '2023-05-17T11:37:35.378137', 'startedAt': '2023-05-17T11:37:34.597028', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/home/joowan/Desktop/SuperResolution/train_swinIR.py', 'codePath': 'train_swinIR.py', 'git': {'remote': 'https://github.com/JuWanMaeng/SuperResolution', 'commit': '9fdddd98e067a6d7f7f2c4bdc0ca8aa4fa7c7288'}, 'email': 'aodwndhks@gmail.com', 'root': '/home/joowan/Desktop/SuperResolution', 'host': 'user1', 'username': 'joowan', 'executable': '/home/joowan/anaconda3/envs/swinir/bin/python', 'cpu_count': 18, 'cpu_count_logical': 36, 'cpu_freq': {'current': 3.5388888888888896, 'min': 1200.0, 'max': 4633.333333333333}, 'cpu_freq_per_core': [{'current': 3.799, 'min': 1200.0, 'max': 4600.0}, {'current': 3.799, 'min': 1200.0, 'max': 4600.0}, {'current': 3.799, 'min': 1200.0, 'max': 4600.0}, {'current': 3.799, 'min': 1200.0, 'max': 4600.0}, {'current': 3.8, 'min': 1200.0, 'max': 4600.0}, {'current': 3.799, 'min': 1200.0, 'max': 4600.0}, {'current': 2.083, 'min': 1200.0, 'max': 4600.0}, {'current': 3.062, 'min': 1200.0, 'max': 4800.0}, {'current': 3.351, 'min': 1200.0, 'max': 4700.0}, {'current': 3.799, 'min': 1200.0, 'max': 4800.0}, {'current': 3.8, 'min': 1200.0, 'max': 4600.0}, {'current': 3.8, 'min': 1200.0, 'max': 4600.0}, {'current': 3.799, 'min': 1200.0, 'max': 4600.0}, {'current': 3.8, 'min': 1200.0, 'max': 4600.0}, {'current': 3.49, 'min': 1200.0, 'max': 4600.0}, {'current': 3.799, 'min': 1200.0, 'max': 4600.0}, {'current': 3.799, 'min': 1200.0, 'max': 4600.0}, {'current': 3.798, 'min': 1200.0, 'max': 4700.0}, {'current': 3.8, 'min': 1200.0, 'max': 4600.0}, {'current': 3.799, 'min': 1200.0, 'max': 4600.0}, {'current': 3.799, 'min': 1200.0, 'max': 4600.0}, {'current': 3.799, 'min': 1200.0, 'max': 4600.0}, {'current': 3.8, 'min': 1200.0, 'max': 4600.0}, {'current': 3.8, 'min': 1200.0, 'max': 4600.0}, {'current': 2.041, 'min': 1200.0, 'max': 4600.0}, {'current': 3.064, 'min': 1200.0, 'max': 4800.0}, {'current': 3.351, 'min': 1200.0, 'max': 4700.0}, {'current': 3.799, 'min': 1200.0, 'max': 4800.0}, {'current': 3.8, 'min': 1200.0, 'max': 4600.0}, {'current': 3.799, 'min': 1200.0, 'max': 4600.0}, {'current': 3.8, 'min': 1200.0, 'max': 4600.0}, {'current': 3.799, 'min': 1200.0, 'max': 4600.0}, {'current': 3.759, 'min': 1200.0, 'max': 4600.0}, {'current': 3.799, 'min': 1200.0, 'max': 4600.0}, {'current': 3.799, 'min': 1200.0, 'max': 4600.0}, {'current': 3.797, 'min': 1200.0, 'max': 4700.0}], 'disk': {'total': 915.3232879638672, 'used': 544.3059043884277}, 'gpu': 'NVIDIA GeForce RTX 3090', 'gpu_count': 4, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 3090', 'memory_total': 25769803776}, {'name': 'NVIDIA GeForce RTX 3090', 'memory_total': 25769803776}, {'name': 'NVIDIA GeForce RTX 3090', 'memory_total': 25769803776}, {'name': 'NVIDIA GeForce RTX 3090', 'memory_total': 25769803776}], 'memory': {'total': 62.49541091918945}}
+2023-05-17 20:37:35,409 INFO    HandlerThread:19591 [system_monitor.py:probe():211] Finished collecting system info
+2023-05-17 20:37:35,410 INFO    HandlerThread:19591 [system_monitor.py:probe():214] Publishing system info
+2023-05-17 20:37:35,410 DEBUG   HandlerThread:19591 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-05-17 20:37:35,411 DEBUG   HandlerThread:19591 [system_info.py:_save_pip():67] Saving pip packages done
+2023-05-17 20:37:35,411 DEBUG   HandlerThread:19591 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2023-05-17 20:37:36,247 INFO    Thread-17 :19591 [dir_watcher.py:_on_file_created():278] file/dir created: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203734-5dgpbpbr/files/wandb-summary.json
+2023-05-17 20:37:36,247 INFO    Thread-17 :19591 [dir_watcher.py:_on_file_created():278] file/dir created: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203734-5dgpbpbr/files/conda-environment.yaml
+2023-05-17 20:37:36,247 INFO    Thread-17 :19591 [dir_watcher.py:_on_file_created():278] file/dir created: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203734-5dgpbpbr/files/requirements.txt
+2023-05-17 20:37:40,166 DEBUG   HandlerThread:19591 [system_info.py:_save_conda():86] Saving conda packages done
+2023-05-17 20:37:40,171 INFO    HandlerThread:19591 [system_monitor.py:probe():216] Finished publishing system info
+2023-05-17 20:37:40,175 DEBUG   SenderThread:19591 [sender.py:send():375] send: files
+2023-05-17 20:37:40,175 INFO    SenderThread:19591 [sender.py:_save_file():1378] saving file wandb-metadata.json with policy now
+2023-05-17 20:37:40,176 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: status_report
+2023-05-17 20:37:40,196 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-17 20:37:40,199 DEBUG   SenderThread:19591 [sender.py:send_request():402] send_request: stop_status
+2023-05-17 20:37:40,243 INFO    Thread-17 :19591 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203734-5dgpbpbr/files/conda-environment.yaml
+2023-05-17 20:37:40,251 INFO    Thread-17 :19591 [dir_watcher.py:_on_file_created():278] file/dir created: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203734-5dgpbpbr/files/wandb-metadata.json
+2023-05-17 20:37:40,483 DEBUG   SenderThread:19591 [sender.py:send():375] send: telemetry
+2023-05-17 20:37:41,022 INFO    wandb-upload_0:19591 [upload_job.py:push():137] Uploaded file /tmp/tmpjnaovh73wandb/zh1y58nq-wandb-metadata.json
+2023-05-17 20:37:41,487 DEBUG   SenderThread:19591 [sender.py:send():375] send: telemetry
+2023-05-17 20:37:41,487 DEBUG   SenderThread:19591 [sender.py:send():375] send: run
+2023-05-17 20:37:41,781 INFO    SenderThread:19591 [sender.py:send_run():1002] updated run: 5dgpbpbr
+2023-05-17 20:37:42,244 INFO    Thread-17 :19591 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203734-5dgpbpbr/files/config.yaml
+2023-05-17 20:37:45,246 INFO    Thread-17 :19591 [dir_watcher.py:_on_file_created():278] file/dir created: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203734-5dgpbpbr/files/output.log
+2023-05-17 20:37:45,720 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: status_report
+2023-05-17 20:37:47,247 INFO    Thread-17 :19591 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203734-5dgpbpbr/files/output.log
+2023-05-17 20:37:50,721 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: status_report
+2023-05-17 20:37:55,194 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-17 20:37:55,195 DEBUG   SenderThread:19591 [sender.py:send_request():402] send_request: stop_status
+2023-05-17 20:37:56,410 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: status_report
+2023-05-17 20:38:01,411 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: status_report
+2023-05-17 20:38:06,418 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: status_report
+2023-05-17 20:38:07,260 INFO    Thread-17 :19591 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203734-5dgpbpbr/files/config.yaml
+2023-05-17 20:38:10,195 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-17 20:38:10,195 DEBUG   SenderThread:19591 [sender.py:send_request():402] send_request: stop_status
+2023-05-17 20:38:12,263 INFO    Thread-17 :19591 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203734-5dgpbpbr/files/output.log
+2023-05-17 20:38:12,397 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: status_report
+2023-05-17 20:38:17,398 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: status_report
+2023-05-17 20:38:19,267 INFO    Thread-17 :19591 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203734-5dgpbpbr/files/output.log
+2023-05-17 20:38:20,267 INFO    Thread-17 :19591 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203734-5dgpbpbr/files/output.log
+2023-05-17 20:38:23,326 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: status_report
+2023-05-17 20:38:25,195 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-17 20:38:25,196 DEBUG   SenderThread:19591 [sender.py:send_request():402] send_request: stop_status
+2023-05-17 20:38:28,395 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: status_report
+2023-05-17 20:38:33,399 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: status_report
+2023-05-17 20:38:35,323 DEBUG   SystemMonitor:19591 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-05-17 20:38:35,327 DEBUG   SenderThread:19591 [sender.py:send():375] send: stats
+2023-05-17 20:38:39,329 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: status_report
+2023-05-17 20:38:40,195 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-17 20:38:40,196 DEBUG   SenderThread:19591 [sender.py:send_request():402] send_request: stop_status
+2023-05-17 20:38:44,395 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: status_report
+2023-05-17 20:38:49,396 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: status_report
+2023-05-17 20:38:54,397 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: status_report
+2023-05-17 20:38:55,195 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: stop_status
+2023-05-17 20:38:55,196 DEBUG   SenderThread:19591 [sender.py:send_request():402] send_request: stop_status
+2023-05-17 20:38:59,411 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: status_report
+2023-05-17 20:39:05,191 DEBUG   HandlerThread:19591 [handler.py:handle_request():144] handle_request: status_report
+2023-05-17 20:39:05,329 DEBUG   SenderThread:19591 [sender.py:send():375] send: stats
+2023-05-17 20:39:05,373 INFO    memory    :19591 [interfaces.py:monitor():140] Process proc.memory.rssMB has exited.
+2023-05-17 20:39:05,375 DEBUG   SystemMonitor:19591 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-05-17 20:39:05,376 DEBUG   SystemMonitor:19591 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-05-17 20:39:05,380 DEBUG   SenderThread:19591 [sender.py:send():375] send: stats
+2023-05-17 20:39:06,296 INFO    Thread-17 :19591 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203734-5dgpbpbr/files/output.log
+2023-05-17 20:39:07,349 INFO    MainThread:19591 [internal.py:handle_exit():76] Internal process exited

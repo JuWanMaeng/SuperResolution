@@ -1,0 +1,24 @@
+2023-05-17 20:34:24,341 INFO    StreamThr :11468 [internal.py:wandb_internal():86] W&B internal server running at pid: 11468, started at: 2023-05-17 20:34:24.340451
+2023-05-17 20:34:24,342 DEBUG   HandlerThread:11468 [handler.py:handle_request():144] handle_request: status
+2023-05-17 20:34:24,345 INFO    WriterThread:11468 [datastore.py:open_for_write():85] open: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203424-a0h8a9yg/run-a0h8a9yg.wandb
+2023-05-17 20:34:24,345 DEBUG   SenderThread:11468 [sender.py:send():375] send: header
+2023-05-17 20:34:24,362 DEBUG   SenderThread:11468 [sender.py:send():375] send: run
+2023-05-17 20:34:24,917 INFO    SenderThread:11468 [dir_watcher.py:__init__():219] watching files in: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203424-a0h8a9yg/files
+2023-05-17 20:34:24,917 INFO    SenderThread:11468 [sender.py:_start_run_threads():1124] run started: a0h8a9yg with start time 1684323264.341598
+2023-05-17 20:34:24,917 DEBUG   SenderThread:11468 [sender.py:send_request():402] send_request: summary_record
+2023-05-17 20:34:24,917 INFO    SenderThread:11468 [sender.py:_save_file():1378] saving file wandb-summary.json with policy end
+2023-05-17 20:34:24,922 DEBUG   HandlerThread:11468 [handler.py:handle_request():144] handle_request: check_version
+2023-05-17 20:34:24,923 DEBUG   SenderThread:11468 [sender.py:send_request():402] send_request: check_version
+2023-05-17 20:34:24,939 DEBUG   HandlerThread:11468 [handler.py:handle_request():144] handle_request: shutdown
+2023-05-17 20:34:24,940 INFO    HandlerThread:11468 [handler.py:finish():845] shutting down handler
+2023-05-17 20:34:24,982 INFO    SenderThread:11468 [sender.py:finish():1550] shutting down sender
+2023-05-17 20:34:24,982 INFO    SenderThread:11468 [dir_watcher.py:finish():365] shutting down directory watcher
+2023-05-17 20:34:25,918 INFO    Thread-12 :11468 [dir_watcher.py:_on_file_created():278] file/dir created: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203424-a0h8a9yg/files/wandb-summary.json
+2023-05-17 20:34:25,918 INFO    SenderThread:11468 [dir_watcher.py:finish():395] scan: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203424-a0h8a9yg/files
+2023-05-17 20:34:25,918 INFO    SenderThread:11468 [dir_watcher.py:finish():409] scan save: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203424-a0h8a9yg/files/config.yaml config.yaml
+2023-05-17 20:34:25,919 INFO    SenderThread:11468 [dir_watcher.py:finish():409] scan save: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203424-a0h8a9yg/files/wandb-summary.json wandb-summary.json
+2023-05-17 20:34:25,919 INFO    SenderThread:11468 [file_pusher.py:finish():167] shutting down file pusher
+2023-05-17 20:34:25,919 INFO    SenderThread:11468 [file_pusher.py:join():172] waiting for file pusher
+2023-05-17 20:34:25,923 INFO    WriterThread:11468 [datastore.py:close():298] close: /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203424-a0h8a9yg/run-a0h8a9yg.wandb
+2023-05-17 20:34:26,657 INFO    wandb-upload_0:11468 [upload_job.py:push():137] Uploaded file /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203424-a0h8a9yg/files/config.yaml
+2023-05-17 20:34:26,740 INFO    wandb-upload_1:11468 [upload_job.py:push():137] Uploaded file /home/joowan/Desktop/SuperResolution/wandb/run-20230517_203424-a0h8a9yg/files/wandb-summary.json

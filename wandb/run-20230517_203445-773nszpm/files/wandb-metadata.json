@@ -1,0 +1,237 @@
+{
+    "os": "Linux-5.4.0-137-generic-x86_64-with-glibc2.27",
+    "python": "3.9.16",
+    "heartbeatAt": "2023-05-17T11:34:46.187505",
+    "startedAt": "2023-05-17T11:34:45.506719",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home/joowan/Desktop/SuperResolution/train_swinIR.py",
+    "codePath": "train_swinIR.py",
+    "git": {
+        "remote": "https://github.com/JuWanMaeng/SuperResolution",
+        "commit": "9fdddd98e067a6d7f7f2c4bdc0ca8aa4fa7c7288"
+    },
+    "email": "aodwndhks@gmail.com",
+    "root": "/home/joowan/Desktop/SuperResolution",
+    "host": "user1",
+    "username": "joowan",
+    "executable": "/home/joowan/anaconda3/envs/swinir/bin/python",
+    "cpu_count": 18,
+    "cpu_count_logical": 36,
+    "cpu_freq": {
+        "current": 3.7648333333333333,
+        "min": 1200.0,
+        "max": 4633.333333333333
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3.799,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.8,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.799,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.8,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.8,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.8,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.799,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.25,
+            "min": 1200.0,
+            "max": 4800.0
+        },
+        {
+            "current": 3.781,
+            "min": 1200.0,
+            "max": 4700.0
+        },
+        {
+            "current": 3.8,
+            "min": 1200.0,
+            "max": 4800.0
+        },
+        {
+            "current": 3.799,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.799,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.799,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.8,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.799,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.799,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.8,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.8,
+            "min": 1200.0,
+            "max": 4700.0
+        },
+        {
+            "current": 3.8,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.8,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.8,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.799,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.803,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.801,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.8,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.103,
+            "min": 1200.0,
+            "max": 4800.0
+        },
+        {
+            "current": 3.799,
+            "min": 1200.0,
+            "max": 4700.0
+        },
+        {
+            "current": 3.803,
+            "min": 1200.0,
+            "max": 4800.0
+        },
+        {
+            "current": 3.8,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.799,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.8,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.8,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.802,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.803,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.8,
+            "min": 1200.0,
+            "max": 4600.0
+        },
+        {
+            "current": 3.799,
+            "min": 1200.0,
+            "max": 4700.0
+        }
+    ],
+    "disk": {
+        "total": 915.3232879638672,
+        "used": 544.3033790588379
+    },
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "gpu_count": 4,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 3090",
+            "memory_total": 25769803776
+        },
+        {
+            "name": "NVIDIA GeForce RTX 3090",
+            "memory_total": 25769803776
+        },
+        {
+            "name": "NVIDIA GeForce RTX 3090",
+            "memory_total": 25769803776
+        },
+        {
+            "name": "NVIDIA GeForce RTX 3090",
+            "memory_total": 25769803776
+        }
+    ],
+    "memory": {
+        "total": 62.49541091918945
+    }
+}

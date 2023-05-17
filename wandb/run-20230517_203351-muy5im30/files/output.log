@@ -1,0 +1,22 @@
+max_epoch:2500, milestones:[1250, 1500, 2000, 2250]
+--------------------
+epoch:1, current_lr:0.0002
+/home/joowan/anaconda3/envs/swinir/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3483.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+train: |                                                | 0/200 [00:00<?, ?it/s]/home/joowan/anaconda3/envs/swinir/lib/python3.9/site-packages/torch/nn/modules/loss.py:101: UserWarning: Using a target size (torch.Size([4, 3, 128, 128])) that is different to the input size (torch.Size([4, 3, 126, 126])). This will likely lead to incorrect results due to broadcasting. Please ensure they have the same size.
+  return F.l1_loss(input, target, reduction=self.reduction)
+train: |                                                | 0/200 [00:02<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/joowan/Desktop/SuperResolution/train_swinIR.py", line 142, in <module>
+    main(scale=3)
+  File "/home/joowan/Desktop/SuperResolution/train_swinIR.py", line 78, in main
+    loss=criterion(output_img,HR_img)
+  File "/home/joowan/anaconda3/envs/swinir/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/joowan/anaconda3/envs/swinir/lib/python3.9/site-packages/torch/nn/modules/loss.py", line 101, in forward
+    return F.l1_loss(input, target, reduction=self.reduction)
+  File "/home/joowan/anaconda3/envs/swinir/lib/python3.9/site-packages/torch/nn/functional.py", line 3263, in l1_loss
+    expanded_input, expanded_target = torch.broadcast_tensors(input, target)
+  File "/home/joowan/anaconda3/envs/swinir/lib/python3.9/site-packages/torch/functional.py", line 74, in broadcast_tensors
+    return _VF.broadcast_tensors(tensors)  # type: ignore[attr-defined]
+RuntimeError: The size of tensor a (126) must match the size of tensor b (128) at non-singleton dimension 3

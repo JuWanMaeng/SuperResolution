@@ -3,6 +3,7 @@ import numpy as np
 import torch.optim as optim
 import torch.nn as nn
 import torch.optim.lr_scheduler as lr_scheduler
+import torch.nn.functional as F
 
 from SwinIR import SwinIR
 from models.EDSR import EDSR
@@ -19,16 +20,12 @@ import wandb
 
 
 
-def main():
+def main(scale,device):
     wandb.init(project='SwinIR',entity='aodwndhks')
-    wandb.run.name=(f'SwinIR')
+    wandb.run.name=(f'SwinIR_x{scale}')
 
-    if torch.cuda.is_available():
-        device='cuda:3'
-    else:
-        device='cpu'
 
-    upscale = 2
+    upscale = scale
     training_patch_size=128
     batch_size=4
     
@@ -39,9 +36,9 @@ def main():
     print(f'max_epoch:{max_epoch}, milestones:{milestones}')
     
     
-    train_dataset=DatasetSR(phase='train')
-    val_dataset=DatasetSR(phase='val')
-    train_dataloader=DataLoader(train_dataset,batch_size=batch_size,num_workers=8,shuffle=True)
+    train_dataset=DatasetSR(phase='train',scale=upscale)
+    val_dataset=DatasetSR(phase='val',scale=upscale)
+    train_dataloader=DataLoader(train_dataset,batch_size=batch_size,num_workers=4,shuffle=True)
     val_dataloader=DataLoader(val_dataset,batch_size=1,num_workers=1,shuffle=True)
 
    
@@ -75,15 +72,14 @@ def main():
             
             
             output_img=model(LR_img)
+            if upscale==3:
+                output_img = F.pad(output_img, (0, 2, 0, 2), 'reflect')
             loss=criterion(output_img,HR_img)
             train_loss+=loss.item()
             loss.backward()
             optimizer.step()
             
-            output_img=output_img[0].detach().cpu().numpy()
-            HR_img=HR_img[0].cpu().numpy()
-            output_img=(rearrange(output_img,'c h w -> h w c')*255)
-            HR_img=(rearrange(HR_img,'c h w -> h w c')*255)
+       
             
         scheduler.step()
         train_loss=train_loss/len(train_dataloader)
@@ -139,5 +135,9 @@ def main():
          
 
 if __name__ == '__main__':
-   main()
+    if torch.cuda.is_available():
+        device='cuda:1'
+    else:
+        device='cpu'
+    main(scale=3,device=device)
     
