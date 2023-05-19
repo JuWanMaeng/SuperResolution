@@ -52,6 +52,7 @@ class DatasetSR(data.Dataset):
         # ------------------------------------
         img_H=cv2.imread(self.imgs_H[index]['img'])
         img_H=cv2.cvtColor(img_H,cv2.COLOR_BGR2RGB).astype(np.float32)/255.0
+        orig_H=img_H.copy()
         # img_H=util.uint2single(img_H)
         
         # ------------------------------------
@@ -67,6 +68,7 @@ class DatasetSR(data.Dataset):
             # --------------------------------
             img_L=cv2.imread(self.imgs_L[index]['img'])
             img_L=cv2.cvtColor(img_L,cv2.COLOR_BGR2RGB).astype(np.float32)/255.0
+            orig_L=img_L.copy()
             # img_L=util.uint2single(img_L)
             
 
@@ -111,7 +113,7 @@ class DatasetSR(data.Dataset):
         img_H, img_L = util.single2tensor3(img_H), util.single2tensor3(img_L)
         
 
-        return {'L': img_L, 'H': img_H}
+        return {'L': img_L, 'H': img_H,'OL':orig_L,'OH':orig_H}
 
     def __len__(self):
         return len(self.imgs_H)

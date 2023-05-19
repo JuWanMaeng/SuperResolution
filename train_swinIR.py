@@ -117,7 +117,7 @@ def main(scale,device):
             if best_loss > epoch_loss:
                 best_psnr=avg_pnsr
                 best_ssim=avg_ssim
-                torch.save(model.state_dict(),f'weights/SwinIR/best.pt')
+                torch.save(model.state_dict(),f'weights/SwinIR/x{scale}_best.pt')
             
             
             print(f'epoch:{epoch+1}, iter:{step}, Average PSNR:{avg_pnsr:.4f}, Average SSIM:{avg_ssim:.4f}, loss:{epoch_loss:.4f}\n')
